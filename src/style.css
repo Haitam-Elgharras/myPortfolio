@@ -3,8 +3,6 @@
 :root {
   --header-height: 3rem;
 
-  /*========== Colors ==========*/
-  /* Change favorite color */
   --hue-color: 230; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
 
   /* HSL color mode */
@@ -96,45 +94,34 @@ a {
 }
 
 .active-link {
+  color: var(--first-color) !important;
+}
+
+.nav__list {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.nav__link:hover {
   color: var(--first-color);
+}
+
+.nav__icon {
+  font-size: 1.2rem;
+}
+
+.nav__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--title-color);
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-medium);
 }
 
 @media screen and (max-width: 350px) {
   .nav__list {
     column-gap: 0;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .nav__list {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .nav__link {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    color: var(--title-color);
-    font-size: var(--smaller-font-size);
-    font-weight: var(--font-medium);
-  }
-
-  .nav__link:hover {
-    color: var(--first-color);
-  }
-
-  .nav__icon {
-    font-size: 1.2rem;
-  }
-
-  .nav__link {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    color: var(--title-color);
-    font-size: var(--smaller-font-size);
-    font-weight: var(--font-medium);
   }
 }
 

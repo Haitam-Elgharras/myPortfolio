@@ -11,7 +11,7 @@ const sections = [
   { name: "Contact", icon: "uil uil-message" },
 ];
 
-const Navbar = () => {
+const NavList = () => {
   const [active, setActive] = useState("Home");
 
   const handleActive = (name: string) => {
@@ -32,4 +32,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavList;
