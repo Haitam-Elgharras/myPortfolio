@@ -88,6 +88,7 @@ a {
 
 /* end base */
 
+/*========== Header ==========*/
 .grid {
   display: grid;
   gap: 1.5rem;
@@ -119,19 +120,122 @@ a {
   font-weight: var(--font-medium);
 }
 
+.nav__logo,
+.nav__toggle {
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+}
+.nav__toggle {
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.nav__toggle:hover {
+  color: var(--first-color);
+}
+.nav__btns {
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  max-width: 968px;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--mb-1-5);
+  border-bottom: 1px solid var(--scroll-bar-color);
+}
+
+.container {
+  max-width: 768px;
+  margin-left: var(--mb-1-5);
+  margin-right: var(--mb-1-5);
+}
+.header {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--body-color);
+}
+
+/* change theme  */
+
+.change-theme {
+  font-size: 1.25rem;
+  color: var(--title-color);
+  margin-left: var(--mb-1);
+  cursor: pointer;
+}
+
+.change-theme:hover {
+  color: var(--first-color);
+}
+
+/* Media queries */
+
 @media screen and (max-width: 350px) {
+  .container {
+    margin-left: var(--mb-1);
+    margin-right: var(--mb-1);
+  }
+
+  .nav__menu {
+    padding: 2rem 1rem 4rem;
+  }
+
   .nav__list {
     column-gap: 0;
   }
 }
 
+@media screen and (max-width: 767px) {
+  /* hide menu if max-width: 767px */
+  .nav__menu {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--body-color);
+    padding: 2rem 1.5rem 4rem;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 1.5rem 1.5rem 0 0;
+    transition: 0.3s;
+  }
+}
+
 @media screen and (min-width: 768px) {
+  /* centrer au milieu */
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .header {
+    top: 0;
+    bottom: initial;
+  }
+  .header {
+    padding-left: 0 1rem;
+  }
+
+  .nav__menu {
+    margin-left: auto;
+  }
+
   .nav__list {
     display: flex;
     column-gap: 2rem;
   }
 
-  .nav__icon {
+  .nav__icon,
+  .nav__close,
+  .nav__toggle {
     display: none;
+  }
+
+  .change-theme {
+    margin: 0;
   }
 }

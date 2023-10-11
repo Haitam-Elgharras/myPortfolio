@@ -1,7 +1,7 @@
-import NavList from "./NavList";
+import Navbar from "./Navbar";
 import "./style.css";
 function App() {
-  return <NavList />;
+  return <Navbar />;
 }
 
 export default App;
