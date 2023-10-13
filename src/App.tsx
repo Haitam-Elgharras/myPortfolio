@@ -1,7 +1,13 @@
-import Navbar from "./Navbar";
+import HomeContent from "./HomeContent";
+import Navbar from "./Navbar/Navbar";
 import "./style.css";
 function App() {
-  return <Navbar />;
+  return (
+    <>
+      <Navbar />
+      <HomeContent />
+    </>
+  );
 }
 
 export default App;
