@@ -1,6 +1,6 @@
 import NavList from "./NavList";
-import Logo from "./logo";
 import NavButtons from "./NavButtons";
+import Logo from "./Logo";
 
 const Navbar = () => {
   return (

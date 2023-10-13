@@ -6,9 +6,8 @@ const sections = [
   { name: "Home", icon: "uil uil-estate" },
   { name: "About", icon: "uil uil-user" },
   { name: "Skills", icon: "uil uil-file-alt" },
-  { name: "Qualifications", icon: "uil uil-graduation-cap" },
   { name: "Portfolio", icon: "uil uil-scenery" },
-  { name: "Contact", icon: "uil uil-message" },
+  { name: "Contact Me", icon: "uil uil-message" },
 ];
 
 const NavList = () => {
