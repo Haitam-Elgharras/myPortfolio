@@ -68,4 +68,3 @@ You can reach me on [LinkedIn](https://www.linkedin.com/in/haitam-elgharras/) if
 ---
 
 Feel free to customize the content and appearance of your portfolio according to your preferences and needs. Good luck with your journey to becoming a senior!
-```
