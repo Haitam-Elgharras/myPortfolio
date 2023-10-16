@@ -13,8 +13,9 @@ const HomeContent = () => {
             <BlobSVG x="0" y="-70" href={img} />
             <HomeData
               title="Hi, I'm Haitam"
-              subtitle="Software Engineer"
+              subtitles={["Software Engineer", "Web Developer", "Freelancer"]}
               description="High level experience in web development knowledge, producing quality work."
+              delay={1000}
             />
           </div>
         </div>
