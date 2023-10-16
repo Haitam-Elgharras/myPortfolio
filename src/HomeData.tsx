@@ -1,3 +1,5 @@
+import Typewriter from "./animation/TypeWriter";
+
 interface HomeDataProps {
   title: string;
   subtitle: string;
@@ -7,7 +9,16 @@ interface HomeDataProps {
 const HomeData = ({ title, subtitle, description }: HomeDataProps) => {
   return (
     <div className="home__data">
-      <h1 className="home__title">{title}</h1>
+      <h1 className="home__title">
+        <span
+          style={{
+            visibility: "hidden",
+          }}
+        >
+          .
+        </span>
+        <Typewriter text={title} delay={130} infinite />
+      </h1>
       <h3 className="home__subtitle">{subtitle}</h3>
       <p className="home__description">{description}</p>
       <a href="#contact" className="button button--flex">
