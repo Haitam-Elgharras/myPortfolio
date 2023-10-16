@@ -1,15 +1,5 @@
 import { TypeAnimation } from "react-type-animation";
-
-function addDelay(arr: string[], delay: number) {
-  const newArray = [];
-  for (let i = 0; i < arr.length; i++) {
-    newArray.push(arr[i]);
-    if (i < arr.length - 1) {
-      newArray.push(delay);
-    }
-  }
-  return newArray;
-}
+import { addDelay } from "./utils/addDelay";
 
 interface HomeDataProps {
   title: string;
