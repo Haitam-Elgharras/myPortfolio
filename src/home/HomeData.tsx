@@ -1,5 +1,5 @@
 import { TypeAnimation } from "react-type-animation";
-import { addDelay } from "./utils/addDelay";
+import { addDelay } from "../utils/addDelay";
 
 interface HomeDataProps {
   title: string;
@@ -10,6 +10,7 @@ interface HomeDataProps {
 
 const HomeData = ({ title, subtitles, description, delay }: HomeDataProps) => {
   const subtitlesDelay = addDelay(subtitles, delay);
+
   return (
     <div className="home__data">
       <h1 className="home__title">{title}</h1>
