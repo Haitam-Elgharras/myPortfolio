@@ -2,7 +2,7 @@ import { useState } from "react";
 import NavList from "./NavList";
 import { NavToggle, ThemeButton } from "./NavButtons";
 import Logo from "./Logo";
-import ToggleMenuContext from "../../Contexts/toggleMenuContext";
+import ToggleMenuContext from "../../Contexts/ToggleMenuContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
