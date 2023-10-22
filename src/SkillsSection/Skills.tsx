@@ -1,9 +1,19 @@
+// Skills.js
+import { useState } from "react";
 import SkillsCategory from "./SkillsCategory";
 import skillsData from "../data/skillsData";
-import { useState } from "react";
 
 function Skills() {
-  const [show, setShow] = useState(false);
+  const [openCategory, setOpenCategory] = useState(-1);
+
+  const toggleCategory = (index: number) => {
+    if (index === openCategory) {
+      setOpenCategory(-1);
+    } else {
+      setOpenCategory(index);
+    }
+  };
+
   return (
     <div>
       <section className="skills section" id="skills">
@@ -17,8 +27,8 @@ function Skills() {
               subtitle={category.subtitle}
               icon={category.icon}
               skills={category.skills}
-              toggleShow={() => setShow(!show)}
-              show={show}
+              isOpen={index === openCategory}
+              onToggle={() => toggleCategory(index)}
             />
           ))}
         </div>

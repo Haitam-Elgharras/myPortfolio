@@ -1,4 +1,4 @@
-import SkillsItem from "./skillsItem";
+import SkillsList from "./SkillsList";
 
 interface Props {
   icon: string;
@@ -9,8 +9,8 @@ interface Props {
     title: string;
     percentage: string;
   }[];
-  toggleShow: () => void;
-  show: boolean;
+  isOpen: boolean;
+  onToggle: () => void;
 }
 
 const SkillsCategory = ({
@@ -18,33 +18,22 @@ const SkillsCategory = ({
   title,
   subtitle,
   skills,
-  toggleShow,
-  show,
+  isOpen,
+  onToggle,
 }: Props) => {
   return (
     <div
-      className={`skills__content ` + (show ? "skills__open" : "skills__close")}
-      onClick={toggleShow}
+      className={`skills__content ${isOpen ? "skills__open" : "skills__close"}`}
     >
-      <div className="skills__header">
+      <div className="skills__header" onClick={onToggle}>
         <i className={`uil ${icon} skills__icon`}></i>
         <div>
           <h1 className="skills__title">{title}</h1>
           <span className="skills__subtitle">{subtitle}</span>
         </div>
-        <i className="uil uil-angle-down skills__arrow"></i>
+        <i className={`uil uil-angle-down skills__arrow`}></i>
       </div>
-
-      <div className="skills__list grid">
-        {skills.map((skill, index) => (
-          <SkillsItem
-            key={index}
-            icon={skill.icon}
-            title={skill.title}
-            percentage={skill.percentage}
-          />
-        ))}
-      </div>
+      <SkillsList skills={skills} />
     </div>
   );
 };

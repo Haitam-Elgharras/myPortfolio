@@ -15,9 +15,10 @@ const skillsData = [
     title: "Backend developer",
     subtitle: "More than 2 years",
     skills: [
-      { icon: "php", title: "PHP", percentage: "70%" },
+      { icon: "mysql", title: "MySQL", percentage: "80%" },
       { icon: "node", title: "Node Js", percentage: "70%" },
-      { icon: "mysql", title: "MySQL", percentage: "60%" },
+      { icon: "mongodb", title: "MongoDB", percentage: "60%" },
+      { icon: "ASP_NET_MVC", title: "ASP.NET MVC", percentage: "50%" },
     ],
   },
   {
