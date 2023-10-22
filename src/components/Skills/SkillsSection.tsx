@@ -1,7 +1,7 @@
 // Skills.js
 import { useState } from "react";
 import SkillsCategory from "./SkillsCategory";
-import skillsData from "../data/skillsData";
+import skillsData from "../../data/skillsData";
 
 function Skills() {
   const [openCategory, setOpenCategory] = useState(-1);
@@ -16,7 +16,7 @@ function Skills() {
 
   return (
     <div>
-      <section className="skills section" id="skills">
+      <section className="skills section" id="Skills">
         <h2 className="section__title">Skills</h2>
         <span className="section__subtitle">My technical level</span>
         <div className="skills__container container grid">

@@ -1,7 +1,7 @@
-import AboutSection from "./about/AboutSection";
-import HomeContent from "./home/HomeContent";
-import Navbar from "./Navbar/Navbar";
-import Skills from "./SkillsSection/Skills";
+import AboutSection from "./components/about/AboutSection";
+import HomeContent from "./components/home/HomeContent";
+import Navbar from "./components/Navbar/Navbar";
+import Skills from "./components/Skills/SkillsSection";
 import "./style.css";
 function App() {
   return (

@@ -1,4 +1,4 @@
-import SkillsItem from "./skillsItem";
+import SkillsItem from "./SkillsItem";
 
 interface Props {
   skills: {

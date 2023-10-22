@@ -1,3 +1,4 @@
+import SectionTitle from "../SectionTitle";
 import SkillsList from "./SkillsList";
 
 interface Props {
@@ -27,12 +28,10 @@ const SkillsCategory = ({
     >
       <div className="skills__header" onClick={onToggle}>
         <i className={`uil ${icon} skills__icon`}></i>
-        <div>
-          <h1 className="skills__title">{title}</h1>
-          <span className="skills__subtitle">{subtitle}</span>
-        </div>
+        <SectionTitle title={title} subtitle={subtitle} />
         <i className={`uil uil-angle-down skills__arrow`}></i>
       </div>
+
       <SkillsList skills={skills} />
     </div>
   );

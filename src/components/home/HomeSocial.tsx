@@ -1,5 +1,5 @@
 import SocialLink from "./SocialLink";
-import socialLinks from "../data/socialLinks";
+import socialLinks from "../../data/socialLinks";
 
 const HomeSocial = () => {
   return (

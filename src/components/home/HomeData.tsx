@@ -1,5 +1,5 @@
 import { TypeAnimation } from "react-type-animation";
-import { addDelay } from "../utils/addDelay";
+import { addDelay } from "../../utils/addDelay";
 
 interface HomeDataProps {
   title: string;

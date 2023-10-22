@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import ToggleMenuContext from "../Contexts/toggleMenuContext";
+import ToggleMenuContext from "../../Contexts/toggleMenuContext";
 
 const ThemeButton = () => {
   return <i className="uil uil-moon change-theme" id="theme-button"></i>;
