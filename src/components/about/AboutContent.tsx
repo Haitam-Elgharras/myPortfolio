@@ -1,5 +1,5 @@
 import AboutData from "./AboutData";
-import aboutImg from "../assets/img/aboutme.jpeg";
+import aboutImg from "../../assets/img/aboutme.jpeg";
 
 const AboutContent = () => {
   return (

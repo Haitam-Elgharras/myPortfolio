@@ -1,4 +1,4 @@
-import cv from "../assets/pdf/cv.pdf";
+import cv from "../../assets/pdf/cv.pdf";
 
 const AboutButtons = () => {
   return (

@@ -1,7 +1,7 @@
 import HomeSocial from "./HomeSocial";
 import BlobSVG from "./BlobSVG";
 import HomeData from "./HomeData";
-import img from "../assets/img/prfl.png";
+import img from "../../assets/img/prfl.png";
 
 const HomeContent = () => {
   return (
