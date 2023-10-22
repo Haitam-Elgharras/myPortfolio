@@ -1,6 +1,3 @@
-// Skill.js
-import React from "react";
-
 interface skillsItemProps {
   icon: string;
   title: string;
