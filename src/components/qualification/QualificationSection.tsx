@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SectionTitle from "../SectionTitle";
 import QualificationButtonItem from "./QualificationButtonItem";
+import QualificationItem from "./QualificationItem";
 
 const QualificationSection = () => {
   const [activeTab, setActiveTab] = useState("education");
@@ -27,6 +28,33 @@ const QualificationSection = () => {
             onClick={() => handleTabClick("work")}
             target="#work"
           />
+        </div>
+        {/* tester qualificationItem */}
+        <div className="qualification__sections">
+          <div
+            className="qualification__content qualification__active"
+            data-content
+            id="education"
+          >
+            <div className="qualification__sections">
+              <div
+                className="qualification__content qualification__active"
+                data-content
+                id="education"
+              >
+                <QualificationItem
+                  title="Computer Science"
+                  subtitle="University of California, Irvine"
+                  calendar="2019 - 2021"
+                />
+                <QualificationItem
+                  title="Computer Science"
+                  subtitle="University of California, Irvine"
+                  calendar="2019 - 2021"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
