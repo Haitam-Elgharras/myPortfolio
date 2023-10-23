@@ -524,6 +524,31 @@ a {
   margin-bottom: var(--mb-2-5);
 }
 
+/*==================== QUALIFICATION ====================*/
+
+.qualification__button {
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+}
+
+.qualification__button:hover {
+  color: var(--first-color);
+}
+
+.qualification__icon {
+  font-size: 1.8rem;
+  margin-right: var(--mb-0-25);
+}
+
+.qualification__active[data-content] {
+  display: block;
+}
+
+.qualification__button.qualification__active {
+  color: var(--first-color);
+}
+
 /* Media queries */
 @media screen and (max-width: 350px) {
   .container {
