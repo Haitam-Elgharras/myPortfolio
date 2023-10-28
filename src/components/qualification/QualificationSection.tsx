@@ -31,9 +31,7 @@ const QualificationSection = () => {
             target="#work"
           />
         </div>
-        <div className="qualification__sections">
-          <QualificationContent activeTab={activeTab} />
-        </div>
+        <QualificationContent activeTab={activeTab} />
       </div>
     </section>
   );
