@@ -1,14 +1,19 @@
 import QualificationItem from "./QualificationItem";
 import qualificationsData from "../../data/qualificationsData";
 
-const QualificationContent = () => {
+interface Props {
+  activeTab: string;
+}
+
+const QualificationContent = ({ activeTab }: Props) => {
+  const key = activeTab as keyof typeof qualificationsData;
   return (
     <div
-      className="qualification__content qualification__active"
+      className={"qualification__sections qualification-active"}
       data-content
-      id="education"
+      id={activeTab}
     >
-      {qualificationsData.map((qualification, index) => (
+      {qualificationsData[key].map((qualification, index) => (
         <QualificationItem
           key={index}
           title={qualification.title}

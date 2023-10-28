@@ -5,9 +5,11 @@ import QualificationContent from "./QualificationContent";
 
 const QualificationSection = () => {
   const [activeTab, setActiveTab] = useState("education");
+
   const handleTabClick = (target: string) => {
     setActiveTab(target);
   };
+
   return (
     <section className="qualification section">
       <SectionTitle title="Qualification" subtitle="My personal journey" />
@@ -30,7 +32,7 @@ const QualificationSection = () => {
           />
         </div>
         <div className="qualification__sections">
-          <QualificationContent />
+          <QualificationContent activeTab={activeTab} />
         </div>
       </div>
     </section>
