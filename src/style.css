@@ -582,6 +582,14 @@ a {
   /* margin-right: var(--mb-0-75); */
 }
 
+.qualification__line {
+  display: block;
+  width: 1px;
+  height: 100%;
+  background-color: var(--first-color);
+  transform: translate(6px, -7px);
+}
+
 /* Media queries */
 @media screen and (max-width: 350px) {
   .container {
