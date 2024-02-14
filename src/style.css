@@ -634,6 +634,11 @@ img {
 /* Active Modal */
 
 /*==================== PORTFOLIO ====================*/
+@media (min-width: 768px) {
+  .portfolio__container {
+    padding: 0 100px;
+  }
+}
 
 .portfolio__container {
   overflow: inherit;

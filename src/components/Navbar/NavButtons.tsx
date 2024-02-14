@@ -1,10 +1,6 @@
 import { useContext } from "react";
 import ToggleMenuContext from "../../Contexts/ToggleMenuContext";
 
-const ThemeButton = () => {
-  return <i className="uil uil-moon change-theme" id="theme-button"></i>;
-};
-
 const NavToggle = () => {
   const { toggleMenu } = useContext(ToggleMenuContext);
   return (
@@ -14,4 +10,4 @@ const NavToggle = () => {
   );
 };
 
-export { ThemeButton, NavToggle };
+export { NavToggle };

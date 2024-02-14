@@ -1,6 +1,7 @@
 import { useState } from "react";
 import NavList from "./NavList";
-import { NavToggle, ThemeButton } from "./NavButtons";
+import { NavToggle } from "./NavButtons";
+import ThemeButton from "./ThemeButton";
 import Logo from "./Logo";
 import ToggleMenuContext from "../../Contexts/ToggleMenuContext";
 
