@@ -1,10 +1,11 @@
-interface ImageSrc {
-  portfolio1?: string;
-  portfolio2?: string;
-  portfolio3?: string;
-}
+// interface ImageSrc {
+//   portfolio1?: string;
+//   portfolio2?: string;
+//   portfolio3?: string;
+// }
+
 interface Props {
-  imageSrc: ImageSrc;
+  imageSrc: string;
   title: string;
   description: string;
   demoLink: string;
@@ -22,11 +23,7 @@ const PortfolioItem = ({ imageSrc, title, description, demoLink }: Props) => {
       }}
       className="portfolio__content grid swiper-slide"
     >
-      <img
-        src={"https://via.placeholder.com/300x200"}
-        alt=""
-        className="portfolio__img"
-      />
+      <img src={imageSrc} alt="an image" className="portfolio__img" />
       <div className="portfolio__data">
         <h3 className="portfolio__title">{title}</h3>
         <p className="portfolio__description">{description}</p>
