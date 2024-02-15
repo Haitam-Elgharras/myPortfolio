@@ -1,9 +1,3 @@
-// interface ImageSrc {
-//   portfolio1?: string;
-//   portfolio2?: string;
-//   portfolio3?: string;
-// }
-
 interface Props {
   imageSrc: string;
   title: string;
@@ -29,6 +23,7 @@ const PortfolioItem = ({ imageSrc, title, description, demoLink }: Props) => {
         <p className="portfolio__description">{description}</p>
         <a
           href={demoLink}
+          target="_blank"
           className="button button--flex button--small portfolio__button"
         >
           Demo

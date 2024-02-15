@@ -1,28 +1,28 @@
-// import portfolio1 from "../assets/img/portfolio1.jpg";
-// import portfolio2 from "../assets/img/portfolio2.jpg";
-// import portfolio3 from "../assets/img/portfolio3.jpg";
+import gamehub from "../assets/img/gamehubDark.png";
+import nimbustalkHome from "../assets/img/nimbustalkHome.png";
+import ekartHome from "../assets/img/ekartHome.png";
 
 export const portfolioData = [
   {
-    imageSrc: "https://picsum.photos/500/300?random=1",
-    title: "Modern Website",
+    imageSrc: gamehub,
+    title: "Game Hub",
     description:
-      "Website adapted to all devices, with a modern design and animated effects",
-    demoLink: "#",
+      "A web application that allows users to search for games and view details about them on real-time",
+    demoLink: "https://gamehub-23.vercel.app/",
   },
   {
-    imageSrc: "https://picsum.photos/500/300?random=2",
-    title: "Brand Design",
+    imageSrc: nimbustalkHome,
+    title: "NimbusTalk",
     description:
-      "Website adapted to all devices, with UI design and custom illustrations",
-    demoLink: "#",
+      "NimbusTalk a desktop application for secure communication via websockets",
+    demoLink: "https://github.com/Haitam-Elgharras/NimbusTalk",
   },
   {
-    imageSrc: "https://picsum.photos/500/300?random=3",
+    imageSrc: ekartHome,
     title: "Online Store",
     description:
-      "Online store with payment gateway and order tracking and customer registration",
-    demoLink: "#",
+      "Ekart is an online store that will have a payment gateway and order tracking and customer registration",
+    demoLink: "https://github.com/Haitam-Elgharras/E-Commerce-Angular-App",
   },
   {
     imageSrc: "https://picsum.photos/500/300?random=4",
