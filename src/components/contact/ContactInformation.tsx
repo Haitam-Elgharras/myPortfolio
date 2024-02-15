@@ -1,5 +1,3 @@
-import React from "react";
-
 // Contact Information Component
 export const ContactInformation = () => {
   return (

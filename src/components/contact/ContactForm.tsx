@@ -1,5 +1,3 @@
-import React from "react";
-
 // Contact Form Component
 export const ContactForm = () => {
   return (
@@ -31,8 +29,8 @@ export const ContactForm = () => {
         <textarea
           name=""
           id=""
-          cols="0"
-          rows="7"
+          cols={0}
+          rows={7}
           className="contact__input"
         ></textarea>
       </div>

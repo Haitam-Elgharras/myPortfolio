@@ -1,5 +1,3 @@
-import React from "react";
-
 // FooterTitle Component
 export const FooterTitle = () => {
   return (
