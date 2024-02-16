@@ -1,11 +1,18 @@
 interface Props {
+  id: number;
   imageSrc: string;
   title: string;
   description: string;
   demoLink: string;
 }
 
-const PortfolioItem = ({ imageSrc, title, description, demoLink }: Props) => {
+const PortfolioItem = ({
+  id,
+  imageSrc,
+  title,
+  description,
+  demoLink,
+}: Props) => {
   return (
     <div
       style={{
@@ -21,6 +28,7 @@ const PortfolioItem = ({ imageSrc, title, description, demoLink }: Props) => {
       <div className="portfolio__data">
         <h3 className="portfolio__title">{title}</h3>
         <p className="portfolio__description">{description}</p>
+        {/* replace with LinkTo */}
         <a
           href={demoLink}
           target="_blank"

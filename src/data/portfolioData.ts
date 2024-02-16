@@ -4,6 +4,7 @@ import ekartHome from "../assets/img/ekartHome.png";
 
 export const portfolioData = [
   {
+    id: 1,
     imageSrc: gamehub,
     title: "Game Hub",
     description:
@@ -11,6 +12,7 @@ export const portfolioData = [
     demoLink: "https://gamehub-23.vercel.app/",
   },
   {
+    id: 2,
     imageSrc: nimbustalkHome,
     title: "NimbusTalk",
     description:
@@ -18,6 +20,7 @@ export const portfolioData = [
     demoLink: "https://github.com/Haitam-Elgharras/NimbusTalk",
   },
   {
+    id: 3,
     imageSrc: ekartHome,
     title: "Online Store",
     description:
@@ -25,6 +28,7 @@ export const portfolioData = [
     demoLink: "https://github.com/Haitam-Elgharras/E-Commerce-Angular-App",
   },
   {
+    id: 4,
     imageSrc: "https://picsum.photos/500/300?random=4",
     title: "Online Store",
     description:
@@ -32,6 +36,7 @@ export const portfolioData = [
     demoLink: "#",
   },
   {
+    id: 5,
     imageSrc: "https://picsum.photos/500/300?random=5",
     title: "Online Store",
     description:
