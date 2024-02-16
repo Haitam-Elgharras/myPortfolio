@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom";
+
 interface Props {
   name: string;
 }
 
 const Logo = ({ name }: Props) => {
   return (
-    <a href="/" className="nav__logo">
+    <Link to="/" className="nav__logo">
       {name}
-    </a>
+    </Link>
   );
 };
 

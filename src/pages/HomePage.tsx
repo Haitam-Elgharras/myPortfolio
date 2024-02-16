@@ -6,6 +6,7 @@ import FooterSection from "../components/footer/FooterSection";
 import HomeContent from "../components/home/HomeContent";
 import PortfolioSection from "../components/portfolio/PortfolioSection";
 import QualificationSection from "../components/qualification/QualificationSection";
+import "../style.css";
 
 const HomePage = () => {
   return (
