@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const ThemeButton = () => {
   // State to track the current theme
-  const [isDarkTheme, setIsDarkTheme] = useState(true);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   // Function to toggle the theme
   const toggleTheme = () => {

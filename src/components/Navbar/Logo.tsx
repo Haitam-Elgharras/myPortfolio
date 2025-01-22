@@ -1,15 +1,11 @@
-import { Link } from "react-router-dom";
+import HeLogo from "../../assets/img/HEfovicon.png";
 
 interface Props {
   name: string;
 }
 
 const Logo = ({ name }: Props) => {
-  return (
-    <Link to="/" className="nav__logo">
-      {name}
-    </Link>
-  );
+  return <img src={HeLogo} alt={name} className="nav__logo" />;
 };
 
 export default Logo;

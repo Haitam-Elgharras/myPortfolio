@@ -16,7 +16,7 @@ const Navbar = () => {
     <ToggleMenuContext.Provider value={{ toggleMenu }}>
       <header className="header" id="header">
         <nav className="nav container">
-          <Logo name="Haitam.dev" />
+          <Logo name="Haitam" />
           <div
             className={`nav__menu ${isMenuOpen ? "show-menu" : ""}`}
             id="nav-menu"

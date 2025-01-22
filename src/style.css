@@ -191,14 +191,13 @@ img {
   border-bottom: 1px solid var(--scroll-bar-color);
 }
 
-.nav__logo,
 .nav__toggle {
   color: var(--title-color);
   font-weight: var(--font-medium);
 }
 
-.nav__logo:hover {
-  color: var(--first-color);
+.nav__logo {
+  width: 40px;
 }
 
 .nav__toggle {
