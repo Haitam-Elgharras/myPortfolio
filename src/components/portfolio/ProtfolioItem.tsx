@@ -6,13 +6,7 @@ interface Props {
   demoLink: string;
 }
 
-const PortfolioItem = ({
-  id,
-  imageSrc,
-  title,
-  description,
-  demoLink,
-}: Props) => {
+const PortfolioItem = ({ imageSrc, title, description, demoLink }: Props) => {
   return (
     <div
       style={{
