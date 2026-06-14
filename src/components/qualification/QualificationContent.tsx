@@ -13,9 +13,12 @@ const QualificationContent = ({ activeTab }: Props) => {
         <QualificationItem
           key={index}
           index={index}
+          isLast={index === qualificationsData[key].length - 1}
           title={qualification.title}
-          subtitle={qualification.subtitle}
+          organization={qualification.organization}
           calendar={qualification.calendar}
+          location={qualification.location}
+          bullets={qualification.bullets}
         />
       ))}
     </div>
