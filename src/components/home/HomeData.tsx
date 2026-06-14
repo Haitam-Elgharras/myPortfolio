@@ -6,16 +6,23 @@ interface HomeDataProps {
   subtitles: string[];
   description: string;
   delay: number;
+  prefix?: string;
 }
 
-const HomeData = ({ title, subtitles, description, delay }: HomeDataProps) => {
+const HomeData = ({
+  title,
+  subtitles,
+  description,
+  delay,
+  prefix = "",
+}: HomeDataProps) => {
   const subtitlesDelay = addDelay(subtitles, delay);
 
   return (
     <div className="home__data">
       <h1 className="home__title">{title}</h1>
       <h3 className="home__subtitle">
-        A{" "}
+        {prefix}
         <TypeAnimation
           cursor={true}
           sequence={subtitlesDelay}

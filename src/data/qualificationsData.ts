@@ -1,47 +1,61 @@
-const qualificationsData = {
+export type QualificationEntry = {
+  title: string;
+  organization: string;
+  calendar: string;
+  location?: string;
+  bullets?: string[];
+};
+
+const qualificationsData: Record<"education" | "work", QualificationEntry[]> = {
   education: [
     {
-      title: "Software Engineering",
-      subtitle: "University of Science and Technology",
-      calendar: "2020 - 2023",
+      title: "State Engineer's Degree",
+      organization: "ENSET Mohammedia",
+      calendar: "Sep 2022 - Jul 2025",
+      location: "Mohammedia, Morocco",
+      bullets: [
+        "Software and Distributed Information Systems.",
+      ],
     },
     {
-      title: "Web Development",
-      subtitle: "University of Science and Technology",
-      calendar: "2019 - 2020",
-    },
-    {
-      title: "Web Design",
-      subtitle: "University of Science and Technology",
-      calendar: "2018 - 2019",
-    },
-    {
-      title: "Microservices",
-      subtitle: "University of Science and Technology",
-      calendar: "2016 - 2018",
+      title: "DEUST",
+      organization: "Faculty of Science and Technology Tangier",
+      calendar: "Jan 2020 - Jul 2022",
+      location: "Tangier, Morocco",
+      bullets: [
+        "Mathematics, Computer Science, Physics and Chemistry.",
+      ],
     },
   ],
   work: [
     {
-      title: "Frontend Developer",
-      subtitle: "Company A",
-      calendar: "2020 - 2021",
+      title: "Software Engineer",
+      organization: "Theodo Morocco",
+      calendar: "Feb 2025 - Present",
+      location: "Casablanca Metropolitan Area - On-site",
+      bullets: [
+        "Build full stack product features in agile teams with a focus on performance and user experience.",
+      ],
     },
     {
-      title: "Backend Developer",
-      subtitle: "Company B",
-      calendar: "2019 - 2020",
+      title: "Software Engineer Intern",
+      organization: "NTT DATA Morocco",
+      calendar: "Jul 2024 - Aug 2024",
+      location: "Tetouan Metropolitan Area - On-site",
+      bullets: [
+        "Reduced certificate processing time by 75% by automating certificate workflows with Angular and Spring Boot.",
+      ],
     },
     {
-      title: "Fullstack Developer",
-      subtitle: "Company C",
-      calendar: "2018 - 2019",
-    },
-    {
-      title: "Fullstack Developer",
-      subtitle: "Company D",
-      calendar: "2017 - 2018",
+      title: "Software Engineer Intern",
+      organization: "Eurogate Tanger S.A.",
+      calendar: "Jul 2023",
+      location: "Tangier, Morocco - Hybrid",
+      bullets: [
+        "Contributed to an internal operations platform using C#, ASP.NET, and Entity Framework.",
+      ],
     },
   ],
 };
+
 export default qualificationsData;
