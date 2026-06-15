@@ -16,7 +16,7 @@ const NavItem = ({ name, handleActive, active, icon }: NavItemProps) => {
   return (
     <li className="nav__item" onClick={toggleMenu}>
       <a
-        href={"#" + name}
+        href={`#${name.toLowerCase()}`}
         className={"nav__link " + activeLink}
         onClick={() => handleActive(name)}
       >

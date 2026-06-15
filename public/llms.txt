@@ -1,0 +1,17 @@
+# Haitam Elgharras
+
+Software engineer and full stack developer in Morocco.
+
+Main page: https://www.elhaitam.com/
+Projects:
+- https://www.elhaitam.com/projects/game-hub
+- https://www.elhaitam.com/projects/nimbustalk
+- https://www.elhaitam.com/projects/ekart
+
+Focus areas:
+- Backend services
+- Distributed systems
+- Full-stack web applications
+- Java and Spring Boot
+- React and TypeScript
+- Docker and Kafka

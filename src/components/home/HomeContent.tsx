@@ -27,15 +27,15 @@ const HomeContent = () => {
   }, []);
 
   return (
-    <section className="home section" id="Home">
+    <section className="home section" id="home">
       <div className="home__container container grid">
         <div className="home__content grid">
           <HomeSocial />
           <BlobSVG x="0" y="70" href={isDarkTheme ? darkHeadshot : lightHeadshot} />
           <HomeData
             title="Hi, I'm Haitam"
-            subtitles={["Software Engineer", "Full Stack Developer", "Freelancer"]}
-            description="I design and build reliable web platforms, backend services, and distributed systems with a focus on performance, maintainability, and product quality."
+            subtitles={["Modern Web Applications","Full Stack Developer", "Backend Systems"]}
+            description="I build full-stack web applications, backend services, and distributed systems with Java, Spring Boot, React, TypeScript, Docker, and Kafka."
             delay={1000}
             prefix=""
           />
