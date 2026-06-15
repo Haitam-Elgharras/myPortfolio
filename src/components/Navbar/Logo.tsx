@@ -5,7 +5,11 @@ interface Props {
 }
 
 const Logo = ({ name }: Props) => {
-  return <img src={HeLogo} alt={name} className="nav__logo" />;
+  return (
+    <a href="#home" aria-label="Go to homepage">
+      <img src={HeLogo} alt={name} className="nav__logo" />
+    </a>
+  );
 };
 
 export default Logo;

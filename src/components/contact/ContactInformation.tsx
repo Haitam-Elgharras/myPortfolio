@@ -6,7 +6,7 @@ export const ContactInformation = () => {
         <i className="uil uil-phone contact__icon"></i>
         <div>
           <h3 className="contact__title">Call Me</h3>
-          <span className="contact__subtitle">+212 6 00 00 00 00</span>
+          <span className="contact__subtitle">+212 7 09 15 69 90</span>
         </div>
       </div>
       <div className="contact__information">

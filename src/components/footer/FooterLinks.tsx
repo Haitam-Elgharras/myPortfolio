@@ -4,11 +4,11 @@ export const FooterLinks = () => {
     <ul className="footer__links">
       <li>
         <a href="#portfolio" className="footer__link">
-          Portfolio
+          Projects
         </a>
       </li>
       <li>
-        <a href="#Contact" className="footer__link">
+        <a href="#contact" className="footer__link">
           Contact Me
         </a>
       </li>

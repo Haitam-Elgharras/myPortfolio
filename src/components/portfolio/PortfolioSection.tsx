@@ -3,8 +3,8 @@ import PortfolioContainer from "./PortfolioContainer";
 
 const PortfolioSection = () => {
   return (
-    <section className="portfolio section" id="Portfolio">
-      <SectionTitle title="Portfolio" subtitle="Most recent work" />
+    <section className="portfolio section" id="portfolio">
+      <SectionTitle title="Projects" subtitle="Selected software engineering work" />
       <PortfolioContainer />
     </section>
   );

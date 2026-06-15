@@ -4,7 +4,7 @@ import { ContactInformation } from "./ContactInformation";
 // Main Contact Section Component
 const ContactSection = () => {
   return (
-    <section className="contact section" id="Contact">
+    <section className="contact section" id="contact">
       <h2 className="section__title">Contact Me</h2>
       <span className="section__subtitle">Get in touch</span>
 

@@ -1,7 +1,7 @@
 // Contact Form Component
 export const ContactForm = () => {
   return (
-    <form action="" className="contact__form grid">
+    <form className="contact__form grid">
       <div className="contact__inputs grid">
         <div className="contact__content">
           <label htmlFor="" className="contact__label">
@@ -35,7 +35,10 @@ export const ContactForm = () => {
         ></textarea>
       </div>
       <div>
-        <a href="#" className="button button--flex">
+        <a
+          href="mailto:Elgharras.haitam@gmail.com?subject=Project%20Inquiry%20from%20elhaitam.com"
+          className="button button--flex"
+        >
           Send Message
           <i className="uil uil-message button__icon"></i>
         </a>

@@ -1,10 +1,16 @@
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
+import Seo from "../components/seo/Seo";
 
 const ErrorPage = () => {
   const error = useRouteError();
   return (
     <>
+      <Seo
+        title="Page Not Found | Haitam Elgharras"
+        description="The page you requested could not be found on elhaitam.com."
+        path="/404"
+      />
       <Navbar />
       <div
         style={{
