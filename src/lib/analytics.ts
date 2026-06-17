@@ -1,53 +1,35 @@
+import ReactGA from "react-ga4";
+
 const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID?.trim();
 
-declare global {
-  interface Window {
-    dataLayer: unknown[];
-    gtag?: (...args: unknown[]) => void;
-  }
-}
-
-function gtag(...args: unknown[]) {
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(args);
-}
+let initialized = false;
 
 export function isAnalyticsEnabled() {
   return Boolean(measurementId);
 }
 
 export function initializeAnalytics() {
-  if (!measurementId || typeof window === "undefined") {
+  if (!measurementId || initialized) {
     return;
   }
 
-  if (document.querySelector(`script[data-ga="${measurementId}"]`)) {
-    return;
-  }
-
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-  script.setAttribute("data-ga", measurementId);
-  document.head.appendChild(script);
-
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = gtag;
-  window.gtag("js", new Date());
-  window.gtag("config", measurementId, {
-    anonymize_ip: true,
-    send_page_view: false
+  ReactGA.initialize(measurementId, {
+    gaOptions: {
+      anonymize_ip: true
+    }
   });
+
+  initialized = true;
 }
 
 export function trackPageView(path: string) {
-  if (!measurementId || typeof window === "undefined" || !window.gtag) {
+  if (!measurementId) {
     return;
   }
 
-  window.gtag("event", "page_view", {
-    page_location: window.location.href,
-    page_path: path,
-    page_title: document.title
+  ReactGA.send({
+    hitType: "pageview",
+    page: path,
+    title: document.title
   });
 }
