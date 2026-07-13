@@ -13,15 +13,22 @@ const QualificationButtonItem = ({
   onClick,
   target,
 }: Props) => {
-  const buttonClasses = `qualification__button button--flex ${
+  const buttonClasses = `qualification__button ${
     isActive ? "qualification__active" : ""
   }`;
 
   return (
-    <div className={buttonClasses} data-target={target} onClick={onClick}>
-      <i className={iconClass}></i>
+    <button
+      type="button"
+      role="tab"
+      aria-selected={isActive}
+      className={buttonClasses}
+      data-target={target}
+      onClick={onClick}
+    >
+      <i className={iconClass} aria-hidden="true"></i>
       {text}
-    </div>
+    </button>
   );
 };
 
