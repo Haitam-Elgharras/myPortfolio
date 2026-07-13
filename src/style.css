@@ -396,14 +396,14 @@ button {
   display: inline-flex;
   align-items: center;
 }
-img.nav__logo {
+
+.nav__logo {
   display: block;
-  width: 38px;
-  height: 38px;
-  border-radius: 0.55rem;
+  width: 2.7rem;
+  height: auto;
   transition: transform var(--dur) var(--ease);
 }
-.nav__logo-link:hover .nav__logo { transform: rotate(-6deg) scale(1.05); }
+.nav__logo-link:hover .nav__logo { transform: rotate(-4deg) scale(1.06); }
 
 .nav__btns {
   display: flex;
