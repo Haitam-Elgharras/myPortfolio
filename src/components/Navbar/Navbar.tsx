@@ -22,11 +22,13 @@ const Navbar = () => {
             id="nav-menu"
           >
             <NavList />
-            <i
+            <button
+              type="button"
               className="uil uil-times nav__close"
               id="nav-close"
               onClick={toggleMenu}
-            ></i>
+              aria-label="Close navigation menu"
+            ></button>
           </div>
 
           <div className="nav__btns">
