@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+import SectionTitle from "../SectionTitle";
 import { ContactForm } from "./ContactForm";
 import { ContactInformation } from "./ContactInformation";
 
@@ -5,14 +7,13 @@ import { ContactInformation } from "./ContactInformation";
 const ContactSection = () => {
   return (
     <section className="contact section" id="contact">
-      <h2 className="section__title">Contact Me</h2>
-      <span className="section__subtitle">Get in touch</span>
+      <SectionTitle title="Let's build something reliable" subtitle="Contact" />
 
       <div className="contact__container container grid">
-        <div>
+        <div className="reveal">
           <ContactInformation />
         </div>
-        <div>
+        <div className="reveal" style={{ "--rd": "120ms" } as CSSProperties}>
           <ContactForm />
         </div>
       </div>
