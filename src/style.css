@@ -544,10 +544,10 @@ img.nav__logo {
 }
 
 .home__title {
-  font-size: var(--fs-display);
+  font-size: clamp(2.5rem, 5.5vw, 4rem);
   font-weight: var(--fw-black);
   letter-spacing: -0.03em;
-  line-height: 0.98;
+  line-height: 1;
   margin-bottom: 0.6rem;
 }
 
@@ -1312,7 +1312,7 @@ textarea.contact__input { resize: vertical; min-height: 8rem; }
 
   .home { padding-top: 9rem; }
   .home__content {
-    grid-template-columns: max-content 1.1fr 0.9fr;
+    grid-template-columns: max-content 1.2fr 0.8fr;
     align-items: center;
     column-gap: 3rem;
   }
@@ -1336,4 +1336,6 @@ textarea.contact__input { resize: vertical; min-height: 8rem; }
 
 @media screen and (min-width: 1024px) {
   .project-page__image-grid { grid-template-columns: repeat(3, 1fr); }
+  /* enough room here to keep the full name on one line */
+  .home__title { white-space: nowrap; }
 }
