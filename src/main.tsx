@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "@fontsource-variable/geist";
+import "@fontsource-variable/geist-mono";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import router from "./routing/routes.tsx";
