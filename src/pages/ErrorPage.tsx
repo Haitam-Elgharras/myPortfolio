@@ -1,9 +1,11 @@
-import { isRouteErrorResponse, useRouteError } from "react-router-dom";
+import { Link, isRouteErrorResponse, useRouteError } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import Seo from "../components/seo/Seo";
 
 const ErrorPage = () => {
   const error = useRouteError();
+  const notFound = isRouteErrorResponse(error) && error.status === 404;
+
   return (
     <>
       <Seo
@@ -12,27 +14,19 @@ const ErrorPage = () => {
         path="/404"
       />
       <Navbar />
-      <div
-        style={{
-          display: "flex",
-          flexFlow: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "90vh",
-          fontSize: "2rem",
-        }}
-      >
-        <h2>Oops</h2>
-        <p
-          style={{
-            color: "#dc3545",
-          }}
-        >
-          {isRouteErrorResponse(error)
-            ? "This page does not exist"
-            : "An error occurred"}
+      <main className="error-page" id="home">
+        <span className="error-page__code">{notFound ? "404" : "500"}</span>
+        <h1>{notFound ? "This page doesn't exist" : "Something went wrong"}</h1>
+        <p>
+          {notFound
+            ? "The page you were looking for may have moved or never existed."
+            : "An unexpected error occurred while loading this page. Please try again."}
         </p>
-      </div>
+        <Link to="/" className="button button--flex">
+          Back to homepage
+          <i className="uil uil-arrow-right button__icon"></i>
+        </Link>
+      </main>
     </>
   );
 };
