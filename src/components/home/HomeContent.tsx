@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import HomeSocial from "./HomeSocial";
-import BlobSVG from "./BlobSVG";
 import HomeData from "./HomeData";
 import lightHeadshot from "../../assets/img/hero-headshot-light.png";
 import darkHeadshot from "../../assets/img/hero-headshot-dark.png";
@@ -29,16 +28,29 @@ const HomeContent = () => {
   return (
     <section className="home section" id="home">
       <div className="home__container container grid">
-        <div className="home__content grid">
+        <div className="home__content">
           <HomeSocial />
-          <BlobSVG x="0" y="70" href={isDarkTheme ? darkHeadshot : lightHeadshot} />
           <HomeData
-            title="Hi, I'm Haitam"
-            subtitles={["Modern Web Applications","Full Stack Developer", "Backend Systems"]}
+            eyebrow="Software Engineer"
+            title="Haitam Elgharras"
+            subtitles={[
+              "Modern Web Applications",
+              "Full Stack Developer",
+              "Backend Systems",
+            ]}
             description="I build full-stack web applications, backend services, and distributed systems with Java, Spring Boot, React, TypeScript, Docker, and Kafka."
             delay={1000}
-            prefix=""
           />
+          <div className="home__img reveal">
+            <div className="home__portrait">
+              <div className="home__portrait-inner">
+                <img
+                  src={isDarkTheme ? darkHeadshot : lightHeadshot}
+                  alt="Portrait of Haitam Elgharras, software engineer"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
