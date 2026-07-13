@@ -6,7 +6,7 @@ import { FooterTitle } from "./FooterTitle";
 const FooterSection = () => {
   return (
     <footer className="footer">
-      <div className="footer__bg">
+      <div className="footer__bg reveal">
         <div className="footer__container container grid">
           <div>
             <FooterTitle />

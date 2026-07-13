@@ -1,4 +1,9 @@
 // FooterCopy Component
 export const FooterCopy = () => {
-  return <p className="footer__copy">&#169; Haitam. All rights reserved</p>;
+  const year = new Date().getFullYear();
+  return (
+    <div className="footer__copy">
+      <span>&#169; {year} Haitam Elgharras. All rights reserved.</span>
+    </div>
+  );
 };

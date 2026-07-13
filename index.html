@@ -3,13 +3,13 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/icons-192.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="/icons-512.png" />
-  <link rel="manifest" href="/manifest.webmanifest" />
-  <meta name="theme-color" content="#596adc" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f3ec" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#151311" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Haitam Elgharras | Software Engineer &amp; Full Stack Developer in Morocco</title>
   <meta
@@ -93,6 +93,18 @@
 </head>
 
 <body>
+  <script>
+    // Set theme before paint to avoid a flash and to pick the right headshot.
+    (function () {
+      try {
+        var stored = localStorage.getItem("theme");
+        var dark = stored
+          ? stored === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (dark) document.body.classList.add("dark-theme");
+      } catch (e) {}
+    })();
+  </script>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>

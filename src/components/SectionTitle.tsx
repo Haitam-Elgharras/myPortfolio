@@ -5,9 +5,9 @@ interface Props {
 
 function SectionTitle({ title, subtitle }: Props) {
   return (
-    <div>
-      <h2 className="section__title">{title}</h2>
+    <div className="section__header reveal">
       <span className="section__subtitle">{subtitle}</span>
+      <h2 className="section__title">{title}</h2>
     </div>
   );
 }

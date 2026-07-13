@@ -19,8 +19,9 @@ const NavItem = ({ name, handleActive, active, icon }: NavItemProps) => {
         href={`#${name.toLowerCase()}`}
         className={"nav__link " + activeLink}
         onClick={() => handleActive(name)}
+        aria-current={name === active ? "true" : undefined}
       >
-        <i className={icon + " nav__icon"}></i>
+        <i className={icon + " nav__icon"} aria-hidden="true"></i>
         {name}
       </a>
     </li>

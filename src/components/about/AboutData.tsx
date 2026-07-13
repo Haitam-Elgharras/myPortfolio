@@ -1,9 +1,10 @@
+import type { CSSProperties } from "react";
 import AboutButtons from "./AboutButtons";
 import AboutInfo from "./AboutInfo";
 
 const AboutData = () => {
   return (
-    <div className="about__data">
+    <div className="about__data reveal" style={{ "--rd": "120ms" } as CSSProperties}>
       <p className="about__description">
         I&apos;m Haitam Elgharras, a software engineer in Morocco focused on
         backend systems, scalable web applications, and distributed

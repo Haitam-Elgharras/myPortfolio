@@ -1,4 +1,4 @@
-import HeLogo from "../../assets/img/HEfovicon.png";
+import heMark from "../../assets/img/logo-mark.png";
 
 interface Props {
   name: string;
@@ -6,8 +6,8 @@ interface Props {
 
 const Logo = ({ name }: Props) => {
   return (
-    <a href="#home" aria-label="Go to homepage">
-      <img src={HeLogo} alt={name} className="nav__logo" />
+    <a href="#home" aria-label={`${name} — home`} className="nav__logo-link">
+      <img src={heMark} alt={name} className="nav__logo" />
     </a>
   );
 };

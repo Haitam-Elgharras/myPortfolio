@@ -12,7 +12,6 @@ const QualificationContent = ({ activeTab }: Props) => {
       {qualificationsData[key].map((qualification, index) => (
         <QualificationItem
           key={index}
-          index={index}
           isLast={index === qualificationsData[key].length - 1}
           title={qualification.title}
           organization={qualification.organization}

@@ -28,8 +28,8 @@ const AboutContent = () => {
     <div className="about__container container grid">
       <img
         src={isDarkTheme ? darkAboutImg : lightAboutImg}
-        alt="Portrait of Haitam"
-        className="about__img"
+        alt="Haitam Elgharras working"
+        className="about__img reveal"
       />
       <AboutData />
     </div>

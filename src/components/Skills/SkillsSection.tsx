@@ -16,6 +16,7 @@ import {
   SiSpringboot,
   SiTypescript,
 } from "react-icons/si";
+import SectionTitle from "../SectionTitle";
 import "./style.css";
 
 type Skill = {
@@ -77,12 +78,11 @@ const skillGroups: SkillGroup[] = [
 function Skills() {
   return (
     <section className="skills section" id="skills">
-      <h2 className="section__title">Skills</h2>
-      <span className="section__subtitle">Core engineering strengths</span>
+      <SectionTitle title="The tools I build with" subtitle="Skills" />
 
       <div className="skills-showcase container">
         {skillGroups.map((group) => (
-          <article className="skills-group-card" key={group.title}>
+          <article className="skills-group-card reveal" key={group.title}>
             <div className="skills-group-header">
               <h3 className="skills-group-title">{group.title}</h3>
               <p className="skills-group-description">{group.description}</p>

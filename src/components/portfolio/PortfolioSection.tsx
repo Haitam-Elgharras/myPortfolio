@@ -4,7 +4,7 @@ import PortfolioContainer from "./PortfolioContainer";
 const PortfolioSection = () => {
   return (
     <section className="portfolio section" id="portfolio">
-      <SectionTitle title="Projects" subtitle="Selected software engineering work" />
+      <SectionTitle title="Selected work" subtitle="Projects" />
       <PortfolioContainer />
     </section>
   );

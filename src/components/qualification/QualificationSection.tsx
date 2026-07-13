@@ -13,8 +13,8 @@ const QualificationSection = () => {
   return (
     <section className="qualification section">
       <SectionTitle title="Experience & Education" subtitle="My engineering path" />
-      <div className="qualification__container container">
-        <div className="qualification__tabs">
+      <div className="qualification__container container reveal">
+        <div className="qualification__tabs" role="tablist" aria-label="Qualification type">
           <QualificationButtonItem
             text="Work"
             iconClass="uil uil-briefcase-alt qualification__icon"

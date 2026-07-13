@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { Link, useParams } from "react-router-dom";
 import Seo from "../components/seo/Seo";
 import { getProjectBySlug, portfolioData } from "../data/portfolioData";
@@ -52,15 +53,16 @@ const ProjectDetailPage = () => {
         path={`/projects/${project.slug}`}
         schema={schema}
       />
+      <Link to="/#portfolio" className="project-page__back">
+        <i className="uil uil-arrow-left" aria-hidden="true"></i>
+        Back to projects
+      </Link>
       <div className="project-page__hero">
-        <div className="project-page__copy">
+        <div className="project-page__copy reveal">
           <p className="project-page__eyebrow">Project case study</p>
           <h1>{project.title}</h1>
           <p className="project-page__summary">{project.summary}</p>
           <div className="project-page__links">
-            <a href="/#portfolio" className="button button--flex button--small">
-              Back to projects
-            </a>
             {project.links
               .filter((link) => !link.href.startsWith("/"))
               .map((link) => (
@@ -79,7 +81,8 @@ const ProjectDetailPage = () => {
         <img
           src={project.imageSrc}
           alt={project.imageAlt}
-          className="project-page__cover"
+          className="project-page__cover reveal"
+          style={{ "--rd": "120ms" } as CSSProperties}
         />
       </div>
 
@@ -111,7 +114,6 @@ const ProjectDetailPage = () => {
           {project.images.map((image) => (
             <figure key={image.src} className="project-page__figure">
               <img src={image.src} alt={image.alt} className="project-page__image" />
-              <figcaption>{image.alt}</figcaption>
             </figure>
           ))}
         </div>
