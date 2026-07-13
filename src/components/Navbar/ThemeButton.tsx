@@ -1,30 +1,31 @@
 import { useEffect, useState } from "react";
 
 const ThemeButton = () => {
-  // State to track the current theme
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  // Initial value comes from the pre-paint script in index.html, which reads
+  // localStorage and falls back to the OS preference.
+  const [isDark, setIsDark] = useState(() =>
+    typeof document !== "undefined" &&
+    document.body.classList.contains("dark-theme")
+  );
 
-  // Function to toggle the theme
-  const toggleTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
-  };
-
-  // Effect to add or remove dark-theme class based on isDarkTheme state
   useEffect(() => {
-    if (!isDarkTheme) {
-      document.body.classList.add("dark-theme");
-    } else {
-      document.body.classList.remove("dark-theme");
+    document.body.classList.toggle("dark-theme", isDark);
+    try {
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    } catch {
+      /* storage unavailable — theme still applies for the session */
     }
-  }, [isDarkTheme]);
+  }, [isDark]);
 
   return (
-    // Toggle the icon based on the current theme state
-    <i
-      className={`uil change-theme ${isDarkTheme ? "uil-moon" : "uil-sun"}`}
+    <button
+      type="button"
       id="theme-button"
-      onClick={toggleTheme}
-    ></i>
+      className={`uil change-theme ${isDark ? "uil-sun" : "uil-moon"}`}
+      onClick={() => setIsDark((value) => !value)}
+      aria-pressed={isDark}
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+    />
   );
 };
 
