@@ -3,4 +3,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [reactRouter()],
+  build: {
+    chunkSizeWarningLimit: 1000,
+  },
 });

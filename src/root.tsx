@@ -11,6 +11,7 @@ import {
 import "@fontsource-variable/geist";
 import "@fontsource-variable/geist-mono";
 import "./style.css";
+import "./unicons.css";
 
 import Navbar from "./components/Navbar/Navbar";
 import { buildMeta } from "./lib/seo";
@@ -94,10 +95,6 @@ export function links() {
       title: "Haitam Elgharras — Engineering notes",
       href: "/rss.xml",
     },
-    {
-      rel: "stylesheet",
-      href: "https://unicons.iconscout.com/release/v4.0.0/css/line.css",
-    },
   ];
 }
 
@@ -124,12 +121,22 @@ export function Layout({ children }: { children: ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         {children}
         <Scripts />
       </body>
     </html>
+  );
+}
+
+export function HydrateFallback() {
+  return (
+    <main className="main" id="home">
+      <section className="error-page container">
+        <p className="eyebrow">Loading</p>
+      </section>
+    </main>
   );
 }
 
