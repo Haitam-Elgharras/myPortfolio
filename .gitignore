@@ -25,3 +25,8 @@ dist-ssr
 
 # Playwright MCP artifacts
 .playwright-mcp
+
+# React Router build output
+build
+.react-router
+.vercel

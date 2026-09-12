@@ -1,3 +1,4 @@
+import type { ProjectSlug } from "./siteRoutes";
 import gamehub from "../assets/img/gamehubDark.png";
 import gamehubBrowse from "../assets/img/gamehub.png";
 import nimbustalkHome from "../assets/img/nimbustalkHome.png";
@@ -20,7 +21,9 @@ export type ProjectLink = {
 
 export type Project = {
   id: number;
-  slug: string;
+  /** Narrowed to the registered slugs so the prerender list and the sitemap
+   *  cannot silently miss a project. Add new ones to siteRoutes.ts first. */
+  slug: ProjectSlug;
   title: string;
   cardDescription: string;
   summary: string;

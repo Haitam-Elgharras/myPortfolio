@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect, useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router";
 import Navbar from "../components/Navbar/Navbar";
 import AnalyticsTracker from "../components/analytics/AnalyticsTracker";
 import ScrollUp from "../components/ScrollUp";

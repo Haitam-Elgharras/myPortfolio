@@ -1,7 +1,44 @@
 import type { CSSProperties } from "react";
-import { Link, useParams } from "react-router-dom";
-import Seo from "../components/seo/Seo";
+import { Link, useParams } from "react-router";
+import { buildMeta, siteUrl } from "../lib/seo";
 import { getProjectBySlug, portfolioData } from "../data/portfolioData";
+import type { Route } from "./+types/ProjectDetailPage";
+
+export function meta({ params }: Route.MetaArgs) {
+  const project = params.slug ? getProjectBySlug(params.slug) : undefined;
+
+  if (!project) {
+    return buildMeta({
+      title: "Project Not Found | Haitam Elgharras",
+      description:
+        "The requested project case study could not be found on elhaitam.com.",
+      path: "/projects/not-found",
+      noindex: true,
+    });
+  }
+
+  const path = `/projects/${project.slug}`;
+
+  return buildMeta({
+    title: `${project.title} | Haitam Elgharras`,
+    description: `${project.title} by Haitam Elgharras: ${project.summary}`,
+    path,
+    type: "article",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      name: `${project.title} | Haitam Elgharras`,
+      url: `${siteUrl}${path}`,
+      mainEntity: {
+        "@type": "CreativeWork",
+        name: project.title,
+        description: project.summary,
+        creator: { "@type": "Person", name: "Haitam Elgharras" },
+        keywords: project.stack.join(", "),
+      },
+    },
+  });
+}
 
 const ProjectDetailPage = () => {
   const { slug } = useParams();
@@ -10,11 +47,6 @@ const ProjectDetailPage = () => {
   if (!project) {
     return (
       <section className="project-page container">
-        <Seo
-          title="Project Not Found | Haitam Elgharras"
-          description="The requested project case study could not be found on elhaitam.com."
-          path="/projects/not-found"
-        />
         <div className="project-page__empty">
           <h1>Project not found</h1>
           <p>The project page you requested does not exist.</p>
@@ -27,32 +59,9 @@ const ProjectDetailPage = () => {
   }
 
   const relatedProjects = portfolioData.filter((item) => item.slug !== project.slug);
-  const projectDescription = `${project.title} by Haitam Elgharras: ${project.summary}`;
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    name: `${project.title} | Haitam Elgharras`,
-    url: `https://www.elhaitam.com/projects/${project.slug}`,
-    mainEntity: {
-      "@type": "CreativeWork",
-      name: project.title,
-      description: project.summary,
-      creator: {
-        "@type": "Person",
-        name: "Haitam Elgharras"
-      },
-      keywords: project.stack.join(", ")
-    }
-  };
 
   return (
     <section className="project-page container">
-      <Seo
-        title={`${project.title} | Haitam Elgharras`}
-        description={projectDescription}
-        path={`/projects/${project.slug}`}
-        schema={schema}
-      />
       <Link to="/#portfolio" className="project-page__back">
         <i className="uil uil-arrow-left" aria-hidden="true"></i>
         Back to projects
