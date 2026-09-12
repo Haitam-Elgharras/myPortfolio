@@ -154,10 +154,12 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
 }
 
 body {
   margin: 0 0 var(--header-height) 0;
+  overflow-x: clip;
   font-family: var(--body-font);
   font-size: var(--fs-base);
   line-height: 1.65;
@@ -247,6 +249,31 @@ button {
     transition-duration: 0.001ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+}
+
+/*==================== 3D BACKGROUND ====================*/
+/* Fixed global WebGL pathway behind all content. Mounted only in dark theme
+   (Layout gates it); when present, the page background goes transparent so the
+   scene shows through, dimmed by a scrim for text legibility. */
+.bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.bg-canvas::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    130% 100% at 50% 25%,
+    rgba(10, 10, 10, 0.1),
+    rgba(10, 10, 10, 0.62) 95%
+  );
+  pointer-events: none;
+}
+body:has(.bg-canvas) {
+  background-color: transparent;
 }
 
 /*==================== LAYOUT PRIMITIVES ====================*/
