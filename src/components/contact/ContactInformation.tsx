@@ -1,4 +1,3 @@
-// Contact Information Component
 export const ContactInformation = () => {
   return (
     <div>

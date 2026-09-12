@@ -1,35 +1,21 @@
-import { useEffect, useState } from "react";
+import type { CSSProperties } from "react";
 import AboutData from "./AboutData";
 import lightAboutImg from "../../assets/img/about-portrait-light.png";
 import darkAboutImg from "../../assets/img/about-portrait-dark.png";
 
+const aboutVars = {
+  "--img-light": `url(${lightAboutImg})`,
+  "--img-dark": `url(${darkAboutImg})`,
+} as CSSProperties;
+
 const AboutContent = () => {
-  const [isDarkTheme, setIsDarkTheme] = useState(
-    document.body.classList.contains("dark-theme")
-  );
-
-  useEffect(() => {
-    const syncTheme = () => {
-      setIsDarkTheme(document.body.classList.contains("dark-theme"));
-    };
-
-    syncTheme();
-
-    const observer = new MutationObserver(syncTheme);
-    observer.observe(document.body, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <div className="about__container container grid">
-      <img
-        src={isDarkTheme ? darkAboutImg : lightAboutImg}
-        alt="Haitam Elgharras working"
-        className="about__img reveal"
+      <div
+        className="about__img theme-img reveal"
+        style={aboutVars}
+        role="img"
+        aria-label="Haitam Elgharras working"
       />
       <AboutData />
     </div>

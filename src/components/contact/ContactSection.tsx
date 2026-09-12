@@ -1,9 +1,8 @@
 import type { CSSProperties } from "react";
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "../shared/SectionTitle";
 import { ContactForm } from "./ContactForm";
 import { ContactInformation } from "./ContactInformation";
 
-// Main Contact Section Component
 const ContactSection = () => {
   return (
     <section className="contact section" id="contact">

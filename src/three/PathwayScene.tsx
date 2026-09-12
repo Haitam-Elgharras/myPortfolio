@@ -17,7 +17,6 @@ const BG = "#0a0a0a";
 const PATH_START = 6;
 const PATH_END = -40;
 
-
 const CameraRig = () => {
   const { scrollYProgress } = useScroll();
   const velocity = useVelocity(scrollYProgress);
@@ -44,7 +43,6 @@ const CameraRig = () => {
       );
     }
 
-    // warp: widen FOV with scroll speed
     const targetFov = 62 + v * 16;
     cam.fov = THREE.MathUtils.damp(cam.fov, targetFov, 4, delta);
     cam.updateProjectionMatrix();
@@ -55,14 +53,12 @@ const CameraRig = () => {
       cam.position.z - 6
     );
     cam.lookAt(lookTarget.current);
-    // roll into the motion
     if (!reduce) cam.rotateZ(Math.sin(state.clock.elapsedTime) * 0.01 + v * 0.05);
   });
 
   return null;
 };
 
-/** Wireframe wormhole enveloping the path (CatmullRom tube), slowly swirling. */
 const TunnelTube = () => {
   const ref = useRef<THREE.Mesh>(null);
   const geometry = useMemo(() => {
@@ -126,7 +122,6 @@ const PathwayScene = () => {
 
       <TunnelTube />
 
-      {/* reflective floor mirroring the neon */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.44, -16]}>
         <planeGeometry args={[60, 130]} />
         <MeshReflectorMaterial
@@ -144,7 +139,6 @@ const PathwayScene = () => {
         />
       </mesh>
 
-      {/* neon grid corridor (floor + ceiling) just above the reflector */}
       <Grid position={[0, -1.4, -12]} {...gridProps} />
       <Grid position={[0, 4.4, -12]} rotation={[Math.PI, 0, 0]} {...gridProps} />
 

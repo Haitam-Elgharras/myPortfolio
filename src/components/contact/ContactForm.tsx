@@ -1,4 +1,3 @@
-// Contact Form Component
 export const ContactForm = () => {
   return (
     <form

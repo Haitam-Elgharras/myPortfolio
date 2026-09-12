@@ -1,21 +1,27 @@
-// FooterLinks Component
+import { Link } from "react-router";
+
 export const FooterLinks = () => {
   return (
     <ul className="footer__links">
       <li>
-        <a href="#about" className="footer__link">
+        <Link to="/#about" className="footer__link">
           About
-        </a>
+        </Link>
       </li>
       <li>
-        <a href="#portfolio" className="footer__link">
+        <Link to="/#portfolio" className="footer__link">
           Projects
-        </a>
+        </Link>
       </li>
       <li>
-        <a href="#contact" className="footer__link">
+        <Link to="/blog" className="footer__link">
+          Blog
+        </Link>
+      </li>
+      <li>
+        <Link to="/#contact" className="footer__link">
           Contact
-        </a>
+        </Link>
       </li>
     </ul>
   );

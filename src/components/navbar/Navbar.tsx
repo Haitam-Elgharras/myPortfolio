@@ -1,0 +1,44 @@
+import { useState } from "react";
+import NavList from "./NavList";
+import { NavToggle } from "./NavButtons";
+import ThemeButton from "./ThemeButton";
+import Logo from "./Logo";
+import ToggleMenuContext from "../../contexts/ToggleMenuContext";
+
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <ToggleMenuContext.Provider value={{ toggleMenu }}>
+      <header className="header" id="header">
+        <nav className="nav container">
+          <Logo name="Haitam" />
+          <div
+            className={`nav__menu ${isMenuOpen ? "show-menu" : ""}`}
+            id="nav-menu"
+          >
+            <NavList />
+            <button
+              type="button"
+              className="uil uil-times nav__close"
+              id="nav-close"
+              onClick={toggleMenu}
+              aria-label="Close navigation menu"
+            ></button>
+          </div>
+
+          <div className="nav__btns">
+            <ThemeButton />
+            <NavToggle />
+          </div>
+        </nav>
+      </header>
+    </ToggleMenuContext.Provider>
+  );
+};
+
+export default Navbar;

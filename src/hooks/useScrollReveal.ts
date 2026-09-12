@@ -1,13 +1,5 @@
 import { useEffect } from "react";
 
-/**
- * Reveals elements carrying the `.reveal` class as they scroll into view by
- * toggling `.is-visible`. Progressive enhancement: the `.reveal-ready` flag is
- * only set when JS runs, so content stays visible if this never executes.
- * Honors `prefers-reduced-motion` by leaving everything visible and static.
- *
- * Pass a `key` (e.g. the current pathname) so it re-scans after route changes.
- */
 export function useScrollReveal(key?: string) {
   useEffect(() => {
     const prefersReduced = window.matchMedia(

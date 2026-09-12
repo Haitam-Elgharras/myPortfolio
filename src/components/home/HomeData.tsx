@@ -1,6 +1,8 @@
+import { useReducedMotion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { addDelay } from "../../utils/addDelay";
 import Magnetic from "../motion/Magnetic";
+import { useMounted } from "../../hooks/useMounted";
 import cv from "/HAITAM_ELGHARRAS_RESUME.pdf";
 
 interface HomeDataProps {
@@ -11,10 +13,6 @@ interface HomeDataProps {
   delay: number;
 }
 
-const prefersReducedMotion =
-  typeof window !== "undefined" &&
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
 const HomeData = ({
   eyebrow,
   title,
@@ -23,13 +21,16 @@ const HomeData = ({
   delay,
 }: HomeDataProps) => {
   const subtitlesDelay = addDelay(subtitles, delay);
+  const mounted = useMounted();
+  const prefersReducedMotion = useReducedMotion();
+  const staticSubtitle = mounted && prefersReducedMotion;
 
   return (
     <div className="home__data reveal">
       {eyebrow ? <p className="home__eyebrow">{eyebrow}</p> : null}
       <h1 className="home__title">{title}</h1>
       <h3 className="home__subtitle">
-        {prefersReducedMotion ? (
+        {staticSubtitle ? (
           <span className="home__subtitle-accent">{subtitles.join(" / ")}</span>
         ) : (
           <TypeAnimation

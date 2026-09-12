@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "../shared/SectionTitle";
 import QualificationButtonItem from "./QualificationButtonItem";
 import QualificationContent from "./QualificationContent";
 

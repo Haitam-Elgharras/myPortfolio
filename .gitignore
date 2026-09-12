@@ -22,3 +22,28 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Playwright MCP artifacts
+.playwright-mcp
+
+# React Router build output
+build
+.react-router
+.vercel
+
+.env
+.env.*
+!.env.example
+
+src/content/index.json
+src/content/posts/*.json
+public/blog-media/
+public/sitemap.xml
+public/rss.xml
+public/atom.xml
+public/feed.json
+public/llms.txt
+
+CLAUDE.md
+.claude/
+.claudeignore

@@ -1,3 +1,4 @@
+import type { ProjectSlug } from "./siteRoutes";
 import gamehub from "../assets/img/gamehubDark.png";
 import gamehubBrowse from "../assets/img/gamehub.png";
 import nimbustalkHome from "../assets/img/nimbustalkHome.png";
@@ -20,7 +21,7 @@ export type ProjectLink = {
 
 export type Project = {
   id: number;
-  slug: string;
+  slug: ProjectSlug;
   title: string;
   cardDescription: string;
   summary: string;

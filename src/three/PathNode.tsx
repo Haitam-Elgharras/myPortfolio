@@ -25,11 +25,6 @@ function CoreGeometry({ shape }: { shape: Shape }) {
   }
 }
 
-/**
- * A refractive glass crystal caged in a glowing wireframe icosahedron. Reveals
- * (scale 0→1) as the camera nears, recedes once passed. Float drives organic
- * drift/rotation; scale damped in useFrame (no React state).
- */
 const PathNode = ({ position, color = "#f8a312", spin = 1, shape = "ico" }: Props) => {
   const group = useRef<THREE.Group>(null);
 

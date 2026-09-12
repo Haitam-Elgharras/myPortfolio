@@ -7,6 +7,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import { useMounted } from "../../hooks/useMounted";
 
 interface Props {
   children: ReactNode;
@@ -14,10 +15,13 @@ interface Props {
   dir?: 1 | -1;
 }
 
-
 const FlowSection = ({ children, intensity = 1, dir = 1 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
+  const mounted = useMounted();
+
+  const still = mounted && reduce;
+  const k = still ? 0 : intensity;
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -30,18 +34,20 @@ const FlowSection = ({ children, intensity = 1, dir = 1 }: Props) => {
     mass: 0.4,
   });
 
-  const rotateX = useTransform(p, [0, 0.5, 1], [14 * intensity, 0, -8 * intensity]);
-  const rotateY = useTransform(
+  const rotateX = useTransform(p, [0, 0.5, 1], [14 * k, 0, -8 * k]);
+  const rotateY = useTransform(p, [0, 0.5, 1], [18 * dir * k, 0, -10 * dir * k]);
+  const z = useTransform(p, [0, 0.5, 1], [-220 * k, 0, -120 * k]);
+  const y = useTransform(p, [0, 0.5, 1], [80 * k, 0, -48 * k]);
+  const scale = useTransform(
     p,
     [0, 0.5, 1],
-    [18 * dir * intensity, 0, -10 * dir * intensity]
+    still ? [1, 1, 1] : [0.9, 1, 0.96]
   );
-  const z = useTransform(p, [0, 0.5, 1], [-220 * intensity, 0, -120 * intensity]);
-  const y = useTransform(p, [0, 0.5, 1], [80 * intensity, 0, -48 * intensity]);
-  const scale = useTransform(p, [0, 0.5, 1], [0.9, 1, 0.96]);
-  const opacity = useTransform(p, [0, 0.22, 0.82, 1], [0, 1, 1, 0.5]);
-
-  if (reduce) return <>{children}</>;
+  const opacity = useTransform(
+    p,
+    [0, 0.22, 0.82, 1],
+    still ? [1, 1, 1, 1] : [0, 1, 1, 0.5]
+  );
 
   return (
     <motion.div
@@ -55,7 +61,7 @@ const FlowSection = ({ children, intensity = 1, dir = 1 }: Props) => {
         opacity,
         transformPerspective: 1300,
         transformOrigin: "center 45%",
-        willChange: "transform, opacity",
+        willChange: still ? "auto" : "transform, opacity",
       }}
     >
       {children}

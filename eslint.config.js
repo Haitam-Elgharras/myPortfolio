@@ -7,7 +7,7 @@ import globals from "globals";
 
 export default [
   {
-    ignores: ["dist"],
+    ignores: ["dist", "build", ".react-router"],
   },
   js.configs.recommended,
   {
@@ -26,10 +26,26 @@ export default [
     rules: {
       ...tseslint.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
+      "no-undef": "off",
+      "no-empty": ["error", { allowEmptyCatch: true }],
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },
       ],
+    },
+  },
+  {
+    files: ["src/root.tsx", "src/routes.ts", "src/pages/**/*.tsx"],
+    rules: {
+      "react-refresh/only-export-components": "off",
+    },
+  },
+  {
+    files: ["*.config.ts", "*.config.js", "scripts/**/*.ts"],
+    languageOptions: {
+      parser: tsParser,
+      sourceType: "module",
+      globals: globals.node,
     },
   },
 ];
