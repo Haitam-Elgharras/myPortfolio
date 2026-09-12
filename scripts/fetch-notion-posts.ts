@@ -1,7 +1,7 @@
 import { Client, isFullDatabase, isFullPage } from "@notionhq/client";
 import type { PageObjectResponse } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
-import { mkdir, rm, writeFile } from "node:fs/promises";
+import { mkdir, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import type { PostMeta, PostBody } from "../src/lib/blogTypes.ts";
@@ -200,9 +200,14 @@ if (pages.length === 0) {
   );
 }
 
-await rm(POSTS_DIR, { recursive: true, force: true });
 await rm(MEDIA_DIR, { recursive: true, force: true });
 await mkdir(POSTS_DIR, { recursive: true });
+
+for (const entry of await readdir(POSTS_DIR)) {
+  if (entry.endsWith(".json")) {
+    await rm(path.join(POSTS_DIR, entry));
+  }
+}
 
 const index: PostMeta[] = [];
 
