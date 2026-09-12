@@ -67,7 +67,7 @@ A GitHub Actions workflow pings a Vercel deploy hook every six hours as a fallba
 
 ## Deployment
 
-Vercel, zero configuration, via `vercelPreset()` in `react-router.config.ts`. Do not add `vercel.json` rewrites — they conflict with the preset.
+Vercel, via `vercelPreset()` in `react-router.config.ts`. `vercel.json` sets the framework preset to `react-router`; without it Vercel falls back to whatever the project was originally created as and looks for the wrong output directory. Keep that file to the single `framework` key — hand-written `rewrites` conflict with the preset.
 
 ## License
 
