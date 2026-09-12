@@ -1,6 +1,17 @@
+import { readFile } from "node:fs/promises";
 import type { Config } from "@react-router/dev/config";
 import { vercelPreset } from "@vercel/react-router/vite";
 import { projectSlugs } from "./src/data/siteRoutes";
+
+/** Read straight off disk: this file is config, outside Vite's module graph. */
+async function postSlugs(): Promise<string[]> {
+  try {
+    const raw = await readFile("./src/content/index.json", "utf8");
+    return (JSON.parse(raw) as Array<{ slug: string }>).map((p) => p.slug);
+  } catch {
+    return [];
+  }
+}
 
 export default {
   // Keep the existing folder layout instead of moving everything into app/.
@@ -13,10 +24,11 @@ export default {
   presets: [vercelPreset()],
 
   prerender: {
-    paths: ({ getStaticPaths }) => [
-      // "/" and any other route without params
+    paths: async ({ getStaticPaths }) => [
+      // "/", "/blog" and any other route without params
       ...getStaticPaths(),
       ...projectSlugs.map((slug) => `/projects/${slug}`),
+      ...(await postSlugs()).map((slug) => `/blog/${slug}`),
     ],
     concurrency: 4,
   },

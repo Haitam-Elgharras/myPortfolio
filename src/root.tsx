@@ -100,6 +100,12 @@ export function links() {
     { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
     { rel: "manifest", href: "/site.webmanifest" },
     {
+      rel: "alternate",
+      type: "application/rss+xml",
+      title: "Haitam Elgharras — Engineering notes",
+      href: "/rss.xml",
+    },
+    {
       rel: "stylesheet",
       href: "https://unicons.iconscout.com/release/v4.0.0/css/line.css",
     },

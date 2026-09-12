@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.elhaitam.com/</id>
+    <title>Haitam Elgharras — Engineering notes</title>
+    <updated>2026-09-12T10:42:21.420Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <author>
+        <name>Haitam Elgharras</name>
+        <uri>https://www.elhaitam.com/</uri>
+    </author>
+    <link rel="alternate" href="https://www.elhaitam.com/blog"/>
+    <link rel="self" href="https://www.elhaitam.com/atom.xml"/>
+    <subtitle>Notes on Java, Spring Boot, Kafka, React and TypeScript from production work.</subtitle>
+    <logo>https://www.elhaitam.com/og-haitam-elgharras.png</logo>
+    <icon>https://www.elhaitam.com/favicon.ico</icon>
+    <rights>© 2026 Haitam Elgharras</rights>
+</feed>
