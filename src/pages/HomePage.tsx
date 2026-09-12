@@ -1,5 +1,5 @@
-import ProjectSection from "../components/ProjectSection";
-import Skills from "../components/Skills/SkillsSection";
+import ProjectSection from "../components/shared/ProjectSection";
+import Skills from "../components/skills/SkillsSection";
 import AboutSection from "../components/about/AboutSection";
 import ContactSection from "../components/contact/ContactSection";
 import FooterSection from "../components/footer/FooterSection";

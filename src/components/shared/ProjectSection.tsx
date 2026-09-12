@@ -1,4 +1,4 @@
-import Magnetic from "./motion/Magnetic";
+import Magnetic from "../motion/Magnetic";
 
 const ProjectSection = () => {
   return (

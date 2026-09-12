@@ -3,7 +3,7 @@ import NavList from "./NavList";
 import { NavToggle } from "./NavButtons";
 import ThemeButton from "./ThemeButton";
 import Logo from "./Logo";
-import ToggleMenuContext from "../../Contexts/ToggleMenuContext";
+import ToggleMenuContext from "../../contexts/ToggleMenuContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

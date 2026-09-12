@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import ToggleMenuContext from "../../Contexts/ToggleMenuContext";
+import ToggleMenuContext from "../../contexts/ToggleMenuContext";
 
 const NavToggle = () => {
   const { toggleMenu } = useContext(ToggleMenuContext);

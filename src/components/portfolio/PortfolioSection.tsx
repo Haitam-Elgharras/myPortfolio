@@ -1,4 +1,4 @@
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "../shared/SectionTitle";
 import PortfolioContainer from "./PortfolioContainer";
 
 const PortfolioSection = () => {

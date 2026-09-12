@@ -13,7 +13,7 @@ import "@fontsource-variable/geist-mono";
 import "./style.css";
 import "./unicons.css";
 
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import { buildMeta } from "./lib/seo";
 
 const THEME_SCRIPT = `(function () {

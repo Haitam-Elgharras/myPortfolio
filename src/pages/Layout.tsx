@@ -1,8 +1,8 @@
 import { Suspense, lazy, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router";
-import Navbar from "../components/Navbar/Navbar";
+import Navbar from "../components/navbar/Navbar";
 import AnalyticsTracker from "../components/analytics/AnalyticsTracker";
-import ScrollUp from "../components/ScrollUp";
+import ScrollUp from "../components/shared/ScrollUp";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useRouteScroll } from "../hooks/useRouteScroll";
 

@@ -16,7 +16,7 @@ import {
   SiSpringboot,
   SiTypescript,
 } from "react-icons/si";
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "../shared/SectionTitle";
 import "./style.css";
 
 type Skill = {

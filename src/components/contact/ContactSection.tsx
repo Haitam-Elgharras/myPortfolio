@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "../shared/SectionTitle";
 import { ContactForm } from "./ContactForm";
 import { ContactInformation } from "./ContactInformation";
 

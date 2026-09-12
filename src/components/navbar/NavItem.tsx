@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router";
-import ToggleMenuContext from "../../Contexts/ToggleMenuContext";
+import ToggleMenuContext from "../../contexts/ToggleMenuContext";
 
 interface NavItemProps {
   name: string;
