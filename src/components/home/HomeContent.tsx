@@ -1,30 +1,19 @@
-import { useEffect, useState } from "react";
+import type { CSSProperties } from "react";
 import HomeSocial from "./HomeSocial";
 import HomeData from "./HomeData";
 import lightHeadshot from "../../assets/img/hero-headshot-light.png";
 import darkHeadshot from "../../assets/img/hero-headshot-dark.png";
 
+// The light/dark swap is done in CSS (see `.theme-img` in style.css) rather than
+// React state: the browser only fetches the URL the active custom property
+// resolves to, the markup is identical on the server and the client, and the
+// pre-paint theme script means there is never a wrong-theme flash.
+const portraitVars = {
+  "--img-light": `url(${lightHeadshot})`,
+  "--img-dark": `url(${darkHeadshot})`,
+} as CSSProperties;
+
 const HomeContent = () => {
-  const [isDarkTheme, setIsDarkTheme] = useState(
-    document.body.classList.contains("dark-theme")
-  );
-
-  useEffect(() => {
-    const syncTheme = () => {
-      setIsDarkTheme(document.body.classList.contains("dark-theme"));
-    };
-
-    syncTheme();
-
-    const observer = new MutationObserver(syncTheme);
-    observer.observe(document.body, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section className="home section" id="home">
       <div className="home__container container grid">
@@ -43,12 +32,12 @@ const HomeContent = () => {
           />
           <div className="home__img reveal">
             <div className="home__portrait">
-              <div className="home__portrait-inner">
-                <img
-                  src={isDarkTheme ? darkHeadshot : lightHeadshot}
-                  alt="Portrait of Haitam Elgharras, software engineer"
-                />
-              </div>
+              <div
+                className="home__portrait-inner theme-img"
+                style={portraitVars}
+                role="img"
+                aria-label="Portrait of Haitam Elgharras, software engineer"
+              />
             </div>
           </div>
         </div>

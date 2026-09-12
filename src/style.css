@@ -626,14 +626,8 @@ body:has(.bg-canvas) {
   border-radius: var(--radius-xl);
   overflow: hidden;
   border: 1px solid var(--border-color);
-  background: linear-gradient(160deg, var(--surface-2), var(--container-color));
+  background-color: var(--surface-2);
   box-shadow: var(--shadow-lg);
-}
-.home__portrait-inner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
 }
 
 /*==================== ABOUT ====================*/
@@ -645,10 +639,32 @@ body:has(.bg-canvas) {
 .about__img {
   width: 100%;
   max-width: 360px;
+  /* matches the intrinsic 885x975 of both portrait variants, so swapping
+     themes never shifts layout */
+  aspect-ratio: 885 / 975;
   border-radius: var(--radius-lg);
   justify-self: center;
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow);
+}
+
+/*==================== THEME-SWAPPED IMAGES ====================*/
+/* Light/dark artwork driven entirely by CSS. Each element supplies its own
+   --img-light / --img-dark as inline custom properties; the browser only
+   fetches the URL the active variable resolves to, so the unused variant is
+   never downloaded. Kept out of JS so prerendered HTML is already correct and
+   there is nothing to hydrate. */
+.theme-img {
+  background-image: var(--img-light);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+body.dark-theme .theme-img {
+  background-image: var(--img-dark);
+}
+.home__portrait-inner.theme-img {
+  background-position: top center;
 }
 
 .about__description {
