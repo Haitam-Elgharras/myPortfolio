@@ -1,4 +1,3 @@
-// FooterCopy Component
 export const FooterCopy = () => {
   const year = new Date().getFullYear();
   return (

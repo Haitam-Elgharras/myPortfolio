@@ -3,7 +3,6 @@ import SectionTitle from "../SectionTitle";
 import { ContactForm } from "./ContactForm";
 import { ContactInformation } from "./ContactInformation";
 
-// Main Contact Section Component
 const ContactSection = () => {
   return (
     <section className="contact section" id="contact">

@@ -1,12 +1,3 @@
-/**
- * Pulls published posts out of Notion and materialises them into the repo.
- *
- *   node --env-file-if-exists=.env scripts/fetch-notion-posts.ts
- *
- * Runs only on a developer machine or in CI, never on Vercel: the generated
- * output is committed, so a production build needs no Notion token and cannot
- * be broken by a Notion outage.
- */
 import { Client, isFullDatabase, isFullPage } from "@notionhq/client";
 import type { PageObjectResponse } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
@@ -37,8 +28,6 @@ if (!token || !databaseId) {
 }
 
 const notion = new Client({ auth: token, retry: { maxRetries: 4 } });
-
-// ---------------------------------------------------------------- properties
 
 type Props = PageObjectResponse["properties"];
 
@@ -82,7 +71,6 @@ function url(props: Props, key: string): string | null {
   return p?.type === "url" ? p.url : null;
 }
 
-/** First Files&Media entry, else the page's own cover. */
 function rawCover(page: PageObjectResponse): string | null {
   const p = page.properties["Cover"];
   if (p?.type === "files" && p.files.length > 0) {
@@ -101,12 +89,6 @@ function truncate(value: string, max: number) {
   return `${value.slice(0, max - 1).trimEnd()}…`;
 }
 
-// --------------------------------------------------------------------- fetch
-
-/**
- * The 2025-09-03 API removed `databases.query`. A database is now a container
- * for one or more data sources, and queries run against a data source id.
- */
 async function resolveDataSourceId(id: string) {
   const database = await notion.databases.retrieve({ database_id: id });
   if (!isFullDatabase(database)) {
@@ -144,8 +126,6 @@ async function queryPublished(dataSourceId: string) {
   return rows;
 }
 
-// --------------------------------------------------------------------- build
-
 const n2m = new NotionToMarkdown({
   notionClient: notion,
   config: { parseChildPages: false },
@@ -168,8 +148,6 @@ async function buildPost(page: PageObjectResponse) {
     throw new Error(`Page ${page.id} ("${title}"): a Published date is required.`);
   }
 
-  // Sequential by design: Notion rate-limits around 3 requests/second and each
-  // post costs one blocks.children.list per nesting level.
   const blocks = await n2m.pageToMarkdown(page.id);
   const rawMarkdown = n2m.toMarkdownString(blocks).parent ?? "";
   const markdown = await localizeMarkdown(rawMarkdown, slug);
@@ -202,8 +180,6 @@ async function buildPost(page: PageObjectResponse) {
   return { meta, body };
 }
 
-// ---------------------------------------------------------------------- main
-
 const dataSourceId = await resolveDataSourceId(databaseId);
 const pages = await queryPublished(dataSourceId);
 
@@ -214,8 +190,6 @@ if (pages.length === 0) {
   );
 }
 
-// Rebuild from scratch so deleted or unpublished posts and their media do not
-// linger in the repo.
 await rm(POSTS_DIR, { recursive: true, force: true });
 await rm(MEDIA_DIR, { recursive: true, force: true });
 await mkdir(POSTS_DIR, { recursive: true });
@@ -239,8 +213,6 @@ if (duplicates.length > 0) {
   throw new Error(`Duplicate slugs: ${[...new Set(duplicates)].join(", ")}`);
 }
 
-// Guard against the expiring-URL trap: if any survived, images would 403 within
-// the hour and it would look fine in local testing.
 for (const post of index) {
   const body = JSON.parse(
     await import("node:fs/promises").then((fs) =>

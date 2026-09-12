@@ -4,7 +4,6 @@ import { Feed } from "feed";
 import type { PostBody, PostMeta } from "../src/lib/blogTypes.ts";
 import { SITE } from "./site.ts";
 
-/** Feed readers mostly break on relative URLs, so make everything absolute. */
 function absolutize(html: string) {
   return html
     .replace(/(src=")\/(?!\/)/g, `$1${SITE.url}/`)
@@ -41,8 +40,6 @@ export async function writeFeeds(posts: PostMeta[]) {
 
     feed.addItem({
       title: post.title,
-      // The guid must be the permalink and never derived from the title, or a
-      // title edit re-notifies every subscriber as if it were a new post.
       id: `${SITE.url}/blog/${post.slug}`,
       link: post.canonicalUrl || `${SITE.url}/blog/${post.slug}`,
       description: post.excerpt,

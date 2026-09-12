@@ -16,7 +16,6 @@ import type { Root, Element } from "hast";
 import type { TocEntry } from "../src/lib/blogTypes.ts";
 import { stripToProse } from "./readingTime.ts";
 
-/** Collects h2/h3 headings into file.data.toc for the in-page table of contents. */
 function collectHeadings() {
   return (tree: Root, file: { data: Record<string, unknown> }) => {
     const toc: TocEntry[] = [];
@@ -26,7 +25,6 @@ function collectHeadings() {
       if (!id) return;
       toc.push({
         id,
-        // trailing "#" comes from the autolink anchor appended above
         text: toString(node).replace(/#$/, "").trim(),
         depth: node.tagName === "h2" ? 2 : 3,
       });
@@ -35,7 +33,6 @@ function collectHeadings() {
   };
 }
 
-/** Wraps tables so a wide one scrolls instead of blowing out the prose measure. */
 function wrapTables() {
   return (tree: Root) => {
     visit(tree, "element", (node: Element, index, parent) => {
@@ -58,8 +55,6 @@ function wrapTables() {
 const processor = unified()
   .use(remarkParse)
   .use(remarkGfm)
-  // Notion emits raw <details>/<table> for toggles and tables, so the HTML in
-  // the markdown has to survive the trip rather than be escaped.
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeRaw)
   .use(rehypeSlug)
@@ -67,7 +62,6 @@ const processor = unified()
     behavior: "append",
     properties: {
       className: ["prose__anchor"],
-      // hast wants the string form of the ARIA attribute, not a boolean.
       ariaHidden: "true",
       tabIndex: -1,
     },
@@ -79,16 +73,11 @@ const processor = unified()
   })
   .use(rehypeShiki, {
     themes: { light: "vitesse-light", dark: "vesper" },
-    // Emit --shiki-light / --shiki-dark custom properties per token so the
-    // stylesheet can switch themes without re-highlighting in the browser.
     defaultColor: false,
-    // An unfamiliar language must not take the whole build down.
     fallbackLanguage: "text",
     transformers: [
       {
         pre(node: Element) {
-          // Shiki writes the theme background inline, which would beat
-          // `.prose pre { background: var(--surface-2) }`.
           delete node.properties.style;
           node.properties.tabindex = "0";
         },

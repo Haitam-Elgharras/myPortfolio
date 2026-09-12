@@ -28,10 +28,6 @@ function urlEntry(
     .join("\n");
 }
 
-/**
- * Regenerates public/sitemap.xml from the route registry plus the post index,
- * so it can no longer drift the way a hand-maintained file does.
- */
 export async function writeSitemap(posts: PostMeta[]) {
   const newest = posts[0]?.updated ?? posts[0]?.date ?? null;
 

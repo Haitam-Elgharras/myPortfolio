@@ -19,7 +19,6 @@ type Props = Project & {
 const EASE = [0.16, 1, 0.3, 1] as const;
 const SPRING = { stiffness: 220, damping: 22, mass: 0.5 };
 
-/** Faux address bar label: the live/repo hostname, or the case-study slug. */
 function frameLabel(links: Project["links"], slug: string) {
   const external = links.find((link) => link.href.startsWith("http"));
   if (!external) return `elhaitam.com/projects/${slug}`;
@@ -49,8 +48,6 @@ const PortfolioItem = ({
   const isFeature = variant === "feature";
   const wrapperClass = isFeature ? "portfolio__feature" : "portfolio__card";
 
-  // Pointer position (0-1) and hover state as motion values — updated on
-  // pointermove without ever re-rendering the React tree.
   const tilt = isFeature ? 4 : 7;
   const drift = isFeature ? 22 : 12;
   const px = useMotionValue(0.5);
@@ -62,7 +59,6 @@ const PortfolioItem = ({
   const glow = useSpring(active, { stiffness: 200, damping: 30 });
   const rotateX = useSpring(useTransform(py, [0, 1], [tilt, -tilt]), SPRING);
   const rotateY = useSpring(useTransform(px, [0, 1], [-tilt, tilt]), SPRING);
-  // Screenshot drifts opposite the tilt and scales up slightly → parallax depth.
   const imgX = useSpring(useTransform(px, [0, 1], [drift, -drift]), SPRING);
   const imgY = useSpring(useTransform(py, [0, 1], [drift * 0.7, -drift * 0.7]), SPRING);
   const imgScale = useSpring(useTransform(active, [0, 1], [1, 1.08]), SPRING);

@@ -4,9 +4,8 @@ import Navbar from "../components/Navbar/Navbar";
 import AnalyticsTracker from "../components/analytics/AnalyticsTracker";
 import ScrollUp from "../components/ScrollUp";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { useRouteScroll } from "../hooks/useRouteScroll";
 
-// three.js is a heavy, separate chunk — only fetched when the 3D background
-// actually mounts (dark theme, motion allowed).
 const BackgroundExperience = lazy(
   () => import("../three/BackgroundExperience")
 );
@@ -14,7 +13,7 @@ const BackgroundExperience = lazy(
 const Layout = () => {
   const location = useLocation();
   useScrollReveal(location.pathname);
-
+  useRouteScroll();
 
   const [showBackground, setShowBackground] = useState(false);
 

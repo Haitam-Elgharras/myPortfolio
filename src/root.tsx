@@ -4,33 +4,25 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration,
   isRouteErrorResponse,
   useRouteError,
 } from "react-router";
 
 import "@fontsource-variable/geist";
 import "@fontsource-variable/geist-mono";
-import "./index.css";
 import "./style.css";
 
 import Navbar from "./components/Navbar/Navbar";
 import { buildMeta } from "./lib/seo";
 
-// Runs before first paint so the page never flashes the wrong theme. It owns the
-// localStorage read; React adopts whatever it decided (see useIsDarkTheme).
 const THEME_SCRIPT = `(function () {
   try {
     var stored = localStorage.getItem("theme");
-    // default to dark so the immersive 3D background is visible on first visit
     var dark = stored ? stored === "dark" : true;
     if (dark) document.body.classList.add("dark-theme");
   } catch (e) {}
 })();`;
 
-// Site-wide structured data. Rendered as a literal tag rather than via meta()
-// because React Router only renders the deepest route's meta(), which would drop
-// this on every page that defines its own.
 const SITE_SCHEMA = {
   "@context": "https://schema.org",
   "@graph": [
@@ -79,9 +71,6 @@ const SITE_SCHEMA = {
   ],
 };
 
-// Fallback head tags. Any route that exports its own meta() replaces these
-// wholesale (React Router renders only the deepest match), so this is what the
-// error boundary and any future meta-less route get.
 export function meta() {
   return buildMeta({
     title:
@@ -116,8 +105,6 @@ export function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
-        {/* Literal tags, not meta(): these are constant and must survive on
-            routes that export their own meta(). */}
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
@@ -140,7 +127,6 @@ export function Layout({ children }: { children: ReactNode }) {
       <body>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         {children}
-        <ScrollRestoration />
         <Scripts />
       </body>
     </html>

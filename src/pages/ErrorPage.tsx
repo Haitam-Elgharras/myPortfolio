@@ -10,7 +10,6 @@ export function meta() {
   });
 }
 
-// Rendered as the catch-all route inside Layout, so Navbar comes from there.
 const ErrorPage = () => {
   return (
     <main className="error-page" id="home">

@@ -1,15 +1,8 @@
 import indexJson from "../content/index.json";
 import type { PostBody, PostMeta } from "./blogTypes";
 
-/** All published posts, newest first (the build script sorts them). */
 export const posts = indexJson as PostMeta[];
 
-/**
- * One lazy chunk per post body.
- *
- * Not `eager`: a code-heavy post is tens of KB of highlighted HTML, and the
- * index page has no reason to ship any of them.
- */
 const bodies = import.meta.glob<PostBody>("../content/posts/*.json", {
   import: "default",
 });
@@ -35,9 +28,6 @@ export function allTags(): Array<{ tag: string; count: number }> {
     .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
 }
 
-// ------------------------------------------------------------------- search
-
-/** Lowercase and strip diacritics so "référence" matches "reference". */
 const fold = (value: string) =>
   value
     .toLowerCase()
@@ -51,12 +41,6 @@ const haystack = new Map(
   ])
 );
 
-/**
- * Substring match across title, excerpt, tags and series, ANDed over terms.
- *
- * Deliberately not fuzzy: at this scale a scan costs nothing, and edit-distance
- * matching would surface "Kotlin" when you searched for "Kafka".
- */
 export function filterPosts(
   all: PostMeta[],
   query: string,
@@ -72,15 +56,6 @@ export function filterPosts(
   });
 }
 
-// --------------------------------------------------------------- navigation
-
-/**
- * Neighbouring posts by publish date.
- *
- * Named older/newer rather than prev/next: "previous" is ambiguous about
- * whether it means earlier in time or earlier in the list, which is how these
- * end up swapped.
- */
 export function getAdjacent(slug: string) {
   const i = posts.findIndex((post) => post.slug === slug);
   if (i === -1) return { older: null, newer: null };
@@ -97,10 +72,6 @@ export function getSeries(post: PostMeta): PostMeta[] {
     .sort((a, b) => (a.seriesOrder ?? 0) - (b.seriesOrder ?? 0));
 }
 
-/**
- * Related posts: normalised tag overlap, a bonus for the same series, and a
- * gentle recency nudge that can never outweigh a shared tag.
- */
 export function getRelated(post: PostMeta, limit = 3): PostMeta[] {
   const tags = new Set(post.tags);
 
@@ -108,7 +79,6 @@ export function getRelated(post: PostMeta, limit = 3): PostMeta[] {
     .filter((other) => other.slug !== post.slug)
     .map((other) => {
       const shared = other.tags.filter((tag) => tags.has(tag)).length;
-      // Jaccard-ish, so a post with many tags cannot dominate a focused one.
       const union = new Set([...tags, ...other.tags]).size;
       const overlap = shared === 0 || union === 0 ? 0 : shared / union;
       const sameSeries = post.series && other.series === post.series ? 0.5 : 0;

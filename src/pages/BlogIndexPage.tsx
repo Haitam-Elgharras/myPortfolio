@@ -25,14 +25,8 @@ export function meta() {
 }
 
 const BlogIndexPage = () => {
-  // Filters live in the URL so a filtered view is shareable and survives
-  // reload, and back/forward works without any extra state.
   const [params, setParams] = useSearchParams();
 
-  // ...but this page is prerendered without any query string, so reading the
-  // params during the first render would make a shared /blog?tag=kafka link
-  // hydrate against markup listing every post. React would discard the server
-  // HTML and re-render the whole root. Apply filters only after hydration.
   const mounted = useMounted();
   const query = mounted ? params.get("q") ?? "" : "";
   const tag = mounted ? params.get("tag") : null;

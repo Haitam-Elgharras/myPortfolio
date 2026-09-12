@@ -21,8 +21,6 @@ export type ProjectLink = {
 
 export type Project = {
   id: number;
-  /** Narrowed to the registered slugs so the prerender list and the sitemap
-   *  cannot silently miss a project. Add new ones to siteRoutes.ts first. */
   slug: ProjectSlug;
   title: string;
   cardDescription: string;

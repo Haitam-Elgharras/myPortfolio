@@ -1,6 +1,5 @@
 import socialLinks from "../../data/socialLinks";
 
-// FooterSocials Component
 export const FooterSocials = () => {
   return (
     <div className="footer__socials">

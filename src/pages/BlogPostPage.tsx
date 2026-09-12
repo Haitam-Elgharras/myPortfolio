@@ -16,11 +16,6 @@ import {
 import { buildMeta, siteUrl } from "../lib/seo";
 import "../components/blog/style.css";
 
-/**
- * Runs at build time only: with `ssr: false` every /blog/:slug path is in the
- * prerender list, so this resolves during `react-router build` and the result
- * is baked into the HTML.
- */
 type LoaderArgs = { params: { slug?: string } };
 
 export async function loader({ params }: LoaderArgs) {
@@ -98,8 +93,6 @@ export function meta({ data }: { data: LoaderData | undefined }) {
 const BlogPostPage = () => {
   const { post, body, adjacent, related, series } = useLoaderData() as LoaderData;
 
-  // Without a TOC the layout must collapse to one column, or the prose would
-  // be laid into the narrow TOC track and render about 15rem wide.
   const hasToc = body.toc.length >= TOC_MIN_ENTRIES;
 
   return (
@@ -153,9 +146,6 @@ const BlogPostPage = () => {
         >
           {hasToc ? <TableOfContents entries={body.toc} /> : null}
 
-          {/* Trusted content: authored in a private Notion database, converted
-              by a script run locally, and reviewed as a git diff before it
-              ships. There is no user-submitted HTML in this pipeline. */}
           <div
             className="prose"
             dangerouslySetInnerHTML={{ __html: body.html }}

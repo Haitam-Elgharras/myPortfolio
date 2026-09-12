@@ -21,8 +21,6 @@ const HomeData = ({
   delay,
 }: HomeDataProps) => {
   const subtitlesDelay = addDelay(subtitles, delay);
-  // Read after mount, never during the first render: the server has no media
-  // query to consult, so deciding here would make the two passes disagree.
   const mounted = useMounted();
   const prefersReducedMotion = useReducedMotion();
   const staticSubtitle = mounted && prefersReducedMotion;

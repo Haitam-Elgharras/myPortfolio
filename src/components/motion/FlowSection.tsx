@@ -20,10 +20,6 @@ const FlowSection = ({ children, intensity = 1, dir = 1 }: Props) => {
   const reduce = useReducedMotion();
   const mounted = useMounted();
 
-  // Reduced motion flattens every transform to identity instead of dropping the
-  // wrapper. Returning `children` bare would change the tree shape between the
-  // server pass and the client, which hydration treats as a mismatch. Gating on
-  // `mounted` keeps the first client render identical to the prerendered HTML.
   const still = mounted && reduce;
   const k = still ? 0 : intensity;
 

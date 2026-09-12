@@ -1,41 +1,40 @@
-import { useEffect, useRef, useState } from "react";
+import { useSyncExternalStore } from "react";
 
-/**
- * Back-to-top control. Visibility is driven by an IntersectionObserver on a
- * top sentinel (no scroll listener), so it appears once the user has scrolled
- * past the first viewport.
- */
+const SHOW_AFTER_PX = 420;
+
+function subscribe(onStoreChange: () => void) {
+  window.addEventListener("scroll", onStoreChange, { passive: true });
+  return () => window.removeEventListener("scroll", onStoreChange);
+}
+
+const getSnapshot = () => window.scrollY > SHOW_AFTER_PX;
+const getServerSnapshot = () => false;
+
 const ScrollUp = () => {
-  const [visible, setVisible] = useState(false);
-  const sentinelRef = useRef<HTMLSpanElement>(null);
+  const visible = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot
+  );
 
-  useEffect(() => {
-    const el = sentinelRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setVisible(!entry.isIntersecting),
-      { rootMargin: "-420px 0px 0px 0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const scrollToTop = () => {
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
+  };
 
   return (
-    <>
-      <span
-        ref={sentinelRef}
-        aria-hidden="true"
-        style={{ position: "absolute", top: 0, left: 0, width: 1, height: 1 }}
-      />
-      <a
-        href="#home"
-        aria-label="Back to top"
-        className={`scrollup ${visible ? "show-scroll" : ""}`}
-      >
-        <i className="uil uil-arrow-up scrollup__icon" aria-hidden="true"></i>
-      </a>
-    </>
+    <button
+      type="button"
+      onClick={scrollToTop}
+      aria-label="Back to top"
+      className={`scrollup ${visible ? "show-scroll" : ""}`}
+      tabIndex={visible ? 0 : -1}
+      aria-hidden={visible ? undefined : true}
+    >
+      <i className="uil uil-arrow-up scrollup__icon" aria-hidden="true"></i>
+    </button>
   );
 };
 

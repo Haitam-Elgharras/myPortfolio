@@ -1,32 +1,20 @@
-/*====================================================================
-  Haitam Elgharras — portfolio design system
-  Native CSS. Fonts self-hosted via @fontsource-variable (see main.tsx):
-  Geist Variable (UI/body) + Geist Mono Variable (labels, figures).
-  Warm-neutral base with a single locked amber accent.
-====================================================================*/
-
-/*==================== TOKENS ====================*/
 :root {
   color-scheme: light;
   --header-height: 4.25rem;
 
-  /* Neutral hue (warm) driving the greys */
   --hue: 34;
 
-  /* Accent — one locked amber/gold, used sparingly */
   --accent: hsl(38, 94%, 52%);
   --accent-strong: hsl(30, 86%, 46%);
-  --accent-ink: hsl(26, 82%, 38%);      /* amber that passes AA as text on light */
+  --accent-ink: hsl(26, 82%, 38%);
   --accent-soft: hsl(38, 90%, 92%);
-  --on-accent: hsl(30, 40%, 10%);       /* text on amber fills */
+  --on-accent: hsl(30, 40%, 10%);
 
-  /* Legacy names kept so existing selectors keep working */
   --first-color: var(--accent);
-  --first-color-second: hsl(30, 11%, 9%); /* dark ink band (project CTA + footer) */
+  --first-color-second: hsl(30, 11%, 9%);
   --first-color-alt: var(--accent-strong);
   --first-color-lighter: hsl(38, 90%, 72%);
 
-  /* Surfaces + text (light) */
   --body-color: hsl(40, 33%, 97%);
   --container-color: hsl(42, 44%, 99%);
   --surface-2: hsl(38, 26%, 94%);
@@ -40,12 +28,10 @@
   --scroll-bar-color: hsl(34, 18%, 90%);
   --scroll-thumb-color: hsl(34, 12%, 76%);
 
-  /*========== Fonts ==========*/
   --body-font: "Geist Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --title-font: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
   --mono-font: "Geist Mono Variable", ui-monospace, "SF Mono", Menlo, monospace;
 
-  /*========== Fluid type scale ==========*/
   --fs-display: clamp(2.75rem, 1.6rem + 5.4vw, 4.75rem);
   --fs-h1: clamp(2rem, 1.3rem + 2.8vw, 3rem);
   --fs-h2: clamp(1.6rem, 1.2rem + 1.6vw, 2.25rem);
@@ -56,7 +42,6 @@
   --fs-smaller: 0.78rem;
   --fs-eyebrow: 0.75rem;
 
-  /* legacy font-size aliases */
   --big-font-size: var(--fs-display);
   --h1-font-size: var(--fs-h1);
   --h2-font-size: var(--fs-h2);
@@ -65,37 +50,31 @@
   --small-font-size: var(--fs-small);
   --smaller-font-size: var(--fs-smaller);
 
-  /*========== Weights ==========*/
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-semibold: 600;
   --fw-bold: 700;
   --fw-black: 800;
-  --font-medium: 500;      /* legacy */
-  --font-semi-bold: 600;   /* legacy */
+  --font-medium: 500;
+  --font-semi-bold: 600;
 
-  /*========== Radii ==========*/
   --radius-sm: 0.6rem;
   --radius: 1rem;
   --radius-lg: 1.5rem;
   --radius-xl: 2rem;
   --radius-pill: 999px;
 
-  /*========== Shadows (warm-tinted) ==========*/
   --shadow-sm: 0 1px 2px hsl(30 25% 18% / 0.06), 0 2px 6px hsl(30 25% 18% / 0.04);
   --shadow: 0 10px 30px hsl(30 26% 14% / 0.09);
   --shadow-lg: 0 28px 70px hsl(30 26% 12% / 0.14);
 
-  /*========== Motion ==========*/
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --dur: 0.4s;
 
-  /*========== Layout ==========*/
   --container-w: 1160px;
   --prose-w: 62ch;
 
-  /*========== spacing (legacy) ==========*/
   --mb-0-25: 0.25rem;
   --mb-0-5: 0.5rem;
   --mb-0-75: 0.75rem;
@@ -105,7 +84,6 @@
   --mb-2-5: 2.5rem;
   --mb-3: 3rem;
 
-  /*========== z-index ==========*/
   --z-tooltip: 10;
   --z-fixed: 100;
   --z-modal: 1000;
@@ -116,7 +94,7 @@ body.dark-theme {
 
   --accent: hsl(40, 96%, 56%);
   --accent-strong: hsl(40, 92%, 62%);
-  --accent-ink: hsl(40, 92%, 64%);      /* amber text on dark passes AA */
+  --accent-ink: hsl(40, 92%, 64%);
   --accent-soft: hsl(40, 40%, 18%);
   --on-accent: hsl(30, 40%, 8%);
 
@@ -143,7 +121,6 @@ body.dark-theme {
   --shadow-lg: 0 30px 70px hsl(0 0% 0% / 0.55);
 }
 
-/*==================== BASE ====================*/
 * {
   box-sizing: border-box;
   padding: 0;
@@ -204,7 +181,6 @@ button {
   color: var(--on-accent);
 }
 
-/*==================== ACCESSIBILITY ====================*/
 :focus-visible {
   outline: 2px solid var(--accent-ink);
   outline-offset: 3px;
@@ -227,8 +203,6 @@ button {
 }
 .skip-link:focus-visible { translate: -50% 0; }
 
-/*==================== SCROLL REVEAL ====================*/
-/* Gated on .reveal-ready (added by JS) so content stays visible without JS. */
 .reveal-ready .reveal {
   opacity: 0;
   transform: translateY(26px);
@@ -251,10 +225,6 @@ button {
   .reveal { opacity: 1; transform: none; }
 }
 
-/*==================== 3D BACKGROUND ====================*/
-/* Fixed global WebGL pathway behind all content. Mounted only in dark theme
-   (Layout gates it); when present, the page background goes transparent so the
-   scene shows through, dimmed by a scrim for text legibility. */
 .bg-canvas {
   position: fixed;
   inset: 0;
@@ -276,7 +246,6 @@ body:has(.bg-canvas) {
   background-color: transparent;
 }
 
-/*==================== LAYOUT PRIMITIVES ====================*/
 .container {
   width: 100%;
   max-width: var(--container-w);
@@ -290,7 +259,6 @@ body:has(.bg-canvas) {
   padding-block: 5rem 4.5rem;
 }
 
-/* section header: eyebrow above, title below, left-aligned, container width */
 .section__header {
   width: 100%;
   max-width: var(--container-w);
@@ -318,7 +286,6 @@ body:has(.bg-canvas) {
   text-align: left;
 }
 
-/*==================== EYEBROW (reusable) ====================*/
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -331,7 +298,6 @@ body:has(.bg-canvas) {
   font-weight: var(--fw-medium);
 }
 
-/*==================== BUTTONS ====================*/
 .button {
   display: inline-flex;
   align-items: center;
@@ -367,7 +333,6 @@ body:has(.bg-canvas) {
 .button--flex { display: inline-flex; align-items: center; }
 .button--small { padding: 0.72rem 1.1rem; font-size: 0.875rem; }
 
-/* secondary / ghost — text-color label, hairline border */
 .button--ghost,
 .portfolio__button--ghost {
   background-color: transparent;
@@ -382,8 +347,6 @@ body:has(.bg-canvas) {
   transform: translateY(-2px);
 }
 
-/* light button used on the always-dark CTA band — fixed colors (not theme
-   tokens) so text stays legible in both light and dark mode. */
 .button--white {
   background-color: hsl(40, 30%, 97%);
   color: hsl(28, 15%, 12%);
@@ -394,7 +357,6 @@ body:has(.bg-canvas) {
   color: var(--on-accent);
 }
 
-/*==================== HEADER / NAV ====================*/
 .header {
   position: fixed;
   left: 0;
@@ -469,7 +431,7 @@ body:has(.bg-canvas) {
 
 .nav__list {
   display: grid;
-  /* six items on the mobile dock: Home, About, Skills, Portfolio, Blog, Contact */
+
   grid-template-columns: repeat(6, 1fr);
   gap: 0.5rem;
 }
@@ -501,7 +463,6 @@ body:has(.bg-canvas) {
   color: var(--accent-ink);
 }
 
-/* mobile: menu slides up from the bottom dock */
 @media screen and (max-width: 767px) {
   .nav__menu {
     position: fixed;
@@ -523,7 +484,6 @@ body:has(.bg-canvas) {
   }
 }
 
-/*==================== HOME / HERO ====================*/
 .home { padding-top: 6.5rem; }
 
 .home__container { gap: 2rem; }
@@ -601,7 +561,6 @@ body:has(.bg-canvas) {
   gap: 0.85rem;
 }
 
-/* framed portrait replacing the template blob */
 .home__img { justify-self: center; }
 .home__portrait {
   position: relative;
@@ -631,7 +590,6 @@ body:has(.bg-canvas) {
   box-shadow: var(--shadow-lg);
 }
 
-/*==================== ABOUT ====================*/
 .about__container {
   align-items: center;
   gap: 3rem;
@@ -640,8 +598,7 @@ body:has(.bg-canvas) {
 .about__img {
   width: 100%;
   max-width: 360px;
-  /* matches the intrinsic 885x975 of both portrait variants, so swapping
-     themes never shifts layout */
+
   aspect-ratio: 885 / 975;
   border-radius: var(--radius-lg);
   justify-self: center;
@@ -649,12 +606,6 @@ body:has(.bg-canvas) {
   box-shadow: var(--shadow);
 }
 
-/*==================== THEME-SWAPPED IMAGES ====================*/
-/* Light/dark artwork driven entirely by CSS. Each element supplies its own
-   --img-light / --img-dark as inline custom properties; the browser only
-   fetches the URL the active variable resolves to, so the unused variant is
-   never downloaded. Kept out of JS so prerendered HTML is already correct and
-   there is nothing to hydrate. */
 .theme-img {
   background-image: var(--img-light);
   background-size: cover;
@@ -705,7 +656,6 @@ body.dark-theme .theme-img {
 
 .about__buttons { display: flex; }
 
-/*==================== SKILLS ====================*/
 .skills__lead {
   color: var(--text-color);
   font-size: var(--fs-lead);
@@ -713,7 +663,6 @@ body.dark-theme .theme-img {
   margin-bottom: 2.75rem;
 }
 
-/*==================== QUALIFICATION ====================*/
 .qualification__container { margin-top: 1rem; }
 
 .qualification__tabs {
@@ -815,7 +764,6 @@ body.dark-theme .theme-img {
 }
 .qualification__bullets li { line-height: 1.6; }
 
-/*==================== PORTFOLIO ====================*/
 .portfolio__grid { display: grid; gap: 1.5rem; }
 
 .portfolio__feature,
@@ -826,7 +774,7 @@ body.dark-theme .theme-img {
   background: var(--container-color);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  /* the y-lift is driven by Framer Motion; CSS handles depth cues only */
+
   transition: box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
 .portfolio__feature:hover,
@@ -835,7 +783,6 @@ body.dark-theme .theme-img {
   border-color: var(--border-strong);
 }
 
-/* cursor-following spotlight (opacity + gradient driven by Framer motion values) */
 .portfolio__spotlight {
   position: absolute;
   inset: 0;
@@ -845,7 +792,6 @@ body.dark-theme .theme-img {
   opacity: 0;
 }
 
-/* window-chrome frame so raw screenshots read as real products */
 .portfolio__media {
   display: flex;
   flex-direction: column;
@@ -895,7 +841,7 @@ body.dark-theme .theme-img {
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  /* transform (parallax drift + scale) is driven by Framer Motion */
+
 }
 
 .portfolio__body {
@@ -932,7 +878,6 @@ body.dark-theme .theme-img {
 
 .portfolio__cards { display: grid; gap: 1.5rem; }
 
-/* featured: split frame + body on desktop */
 @media screen and (min-width: 768px) {
   .portfolio__feature {
     display: grid;
@@ -955,7 +900,6 @@ body.dark-theme .theme-img {
   .portfolio__cards { grid-template-columns: repeat(2, 1fr); }
 }
 
-/*==================== PROJECT CTA BAND ====================*/
 .project { padding-block: 1rem 5rem; }
 .project__bg {
   position: relative;
@@ -995,7 +939,6 @@ body.dark-theme .theme-img {
 }
 .project__icon { font-size: 1.1rem; }
 
-/*==================== CONTACT ====================*/
 .contact__container {
   grid-template-columns: 1fr;
   gap: 3rem;
@@ -1066,7 +1009,6 @@ body.dark-theme .theme-img {
 }
 textarea.contact__input { resize: vertical; min-height: 8rem; }
 
-/*==================== FOOTER ====================*/
 .footer { padding: 4rem 0 2.5rem; }
 .footer__bg {
   position: relative;
@@ -1130,7 +1072,6 @@ textarea.contact__input { resize: vertical; min-height: 8rem; }
   color: hsl(40 10% 52%);
 }
 
-/*==================== SCROLL UP ====================*/
 .scrollup {
   position: fixed;
   right: 1.25rem;
@@ -1155,7 +1096,6 @@ textarea.contact__input { resize: vertical; min-height: 8rem; }
   .show-scroll { bottom: 2rem; }
 }
 
-/*==================== SCROLLBAR ====================*/
 ::-webkit-scrollbar {
   width: 0.6rem;
   background-color: var(--scroll-bar-color);
@@ -1166,7 +1106,6 @@ textarea.contact__input { resize: vertical; min-height: 8rem; }
 }
 ::-webkit-scrollbar-thumb:hover { background-color: var(--text-color-light); }
 
-/*==================== PROJECT DETAIL PAGE ====================*/
 .project-page {
   padding-top: 7.5rem;
   padding-bottom: 5rem;
@@ -1267,7 +1206,6 @@ textarea.contact__input { resize: vertical; min-height: 8rem; }
 .project-page__related-card:hover img { transform: translateY(-3px); }
 .project-page__related-card span { font-weight: var(--fw-medium); color: var(--title-color); }
 
-/*==================== ERROR / EMPTY ====================*/
 .project-page__empty {
   min-height: 60vh;
   display: grid;
@@ -1297,7 +1235,6 @@ textarea.contact__input { resize: vertical; min-height: 8rem; }
 .error-page p { color: var(--text-color); max-width: 40ch; margin-inline: auto; }
 .error-page .button { justify-self: center; margin-top: 0.5rem; }
 
-/*==================== RESPONSIVE ====================*/
 @media screen and (max-width: 767px) {
   .home__content { grid-template-columns: 1fr; row-gap: 2rem; }
   .home__data { grid-column: 1 / -1; order: 0; }
@@ -1312,7 +1249,6 @@ textarea.contact__input { resize: vertical; min-height: 8rem; }
   .home__social::after { display: none; }
   .section__title { font-size: var(--fs-h2); }
 
-  /* tighten the bottom dock so 6 items fit one row on small phones */
   .nav__link { font-size: 0.6rem; padding: 0.3rem 0.15rem; gap: 0.2rem; }
   .nav__icon { font-size: 1.2rem; }
 }
@@ -1322,7 +1258,6 @@ textarea.contact__input { resize: vertical; min-height: 8rem; }
 
   .section { padding-block: 7rem 6rem; }
 
-  /* nav becomes a floating top pill */
   .header {
     top: 0;
     bottom: auto;
@@ -1380,6 +1315,6 @@ textarea.contact__input { resize: vertical; min-height: 8rem; }
 
 @media screen and (min-width: 1024px) {
   .project-page__image-grid { grid-template-columns: repeat(3, 1fr); }
-  /* enough room here to keep the full name on one line */
+
   .home__title { white-space: nowrap; }
 }

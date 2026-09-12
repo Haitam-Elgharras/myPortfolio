@@ -1,6 +1,5 @@
 import type { TocEntry } from "../../lib/blogTypes";
 
-/** Fewer than this is not a structure worth navigating. */
 export const TOC_MIN_ENTRIES = 3;
 
 const TableOfContents = ({ entries }: { entries: TocEntry[] }) => {

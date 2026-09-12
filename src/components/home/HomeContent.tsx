@@ -4,10 +4,6 @@ import HomeData from "./HomeData";
 import lightHeadshot from "../../assets/img/hero-headshot-light.png";
 import darkHeadshot from "../../assets/img/hero-headshot-dark.png";
 
-// The light/dark swap is done in CSS (see `.theme-img` in style.css) rather than
-// React state: the browser only fetches the URL the active custom property
-// resolves to, the markup is identical on the server and the client, and the
-// pre-paint theme script means there is never a wrong-theme flash.
 const portraitVars = {
   "--img-light": `url(${lightHeadshot})`,
   "--img-dark": `url(${darkHeadshot})`,

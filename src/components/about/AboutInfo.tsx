@@ -30,8 +30,6 @@ const stats: Stat[] = [
   },
 ];
 
-// Counts up from 0 to the numeric part of `value` when scrolled into view.
-// Writes to the DOM node directly (no per-frame React state).
 const StatCounter = ({ value }: { value: string }) => {
   const match = value.match(/^(\d+)(.*)$/);
   const target = Number(match?.[1] ?? 0);

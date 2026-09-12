@@ -1,4 +1,3 @@
-// FooterTitle Component
 export const FooterTitle = () => {
   return (
     <>
