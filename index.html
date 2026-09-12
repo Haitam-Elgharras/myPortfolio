@@ -94,13 +94,11 @@
 
 <body>
   <script>
-    // Set theme before paint to avoid a flash and to pick the right headshot.
     (function () {
       try {
         var stored = localStorage.getItem("theme");
-        var dark = stored
-          ? stored === "dark"
-          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        // default to dark so the immersive 3D background is visible on first visit
+        var dark = stored ? stored === "dark" : true;
         if (dark) document.body.classList.add("dark-theme");
       } catch (e) {}
     })();

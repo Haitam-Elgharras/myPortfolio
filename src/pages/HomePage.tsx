@@ -7,6 +7,7 @@ import HomeContent from "../components/home/HomeContent";
 import PortfolioSection from "../components/portfolio/PortfolioSection";
 import QualificationSection from "../components/qualification/QualificationSection";
 import Seo from "../components/seo/Seo";
+import FlowSection from "../components/motion/FlowSection";
 import "../style.css";
 
 const HomePage = () => {
@@ -18,12 +19,24 @@ const HomePage = () => {
         path="/"
       />
       <HomeContent />
-      <AboutSection />
-      <Skills />
-      <QualificationSection />
-      <PortfolioSection />
-      <ProjectSection />
-      <ContactSection />
+      <FlowSection dir={1}>
+        <AboutSection />
+      </FlowSection>
+      <FlowSection dir={-1}>
+        <Skills />
+      </FlowSection>
+      <FlowSection dir={1}>
+        <QualificationSection />
+      </FlowSection>
+      <FlowSection dir={-1}>
+        <PortfolioSection />
+      </FlowSection>
+      <FlowSection dir={1} intensity={0.7}>
+        <ProjectSection />
+      </FlowSection>
+      <FlowSection dir={-1} intensity={0.7}>
+        <ContactSection />
+      </FlowSection>
       <FooterSection />
     </main>
   );
