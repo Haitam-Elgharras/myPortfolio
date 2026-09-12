@@ -43,3 +43,7 @@ public/rss.xml
 public/atom.xml
 public/feed.json
 public/llms.txt
+
+CLAUDE.md
+.claude/
+.claudeignore
