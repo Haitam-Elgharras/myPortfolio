@@ -267,6 +267,10 @@ body:has(.bg-canvas) .post-page__container {
 
 .post-page__layout {
   display: grid;
+  /* minmax(0, …) not 1fr: a grid item defaults to min-width:auto, so the
+     `white-space: pre` code blocks would force the track to their min-content
+     width and push the whole column past the viewport. */
+  grid-template-columns: minmax(0, 1fr);
   gap: 2.5rem;
 }
 
@@ -432,6 +436,13 @@ body:has(.bg-canvas) .post-page__container {
 
 /*==================== PROSE ====================*/
 .prose {
+  /* width:100% and min-width:0 are both load-bearing. As a grid item,
+     `margin-inline: auto` opts this box out of stretch sizing, so it would take
+     its max-content width — the widest code block — and overflow the track and
+     the viewport on a phone. Setting the width back to 100% restores stretch
+     while the auto margins still centre it once the track exceeds 62ch. */
+  width: 100%;
+  min-width: 0;
   max-width: var(--prose-w);
   margin-inline: auto;
   font-size: var(--fs-lead);
