@@ -20,11 +20,21 @@ const token = process.env.NOTION_TOKEN;
 const databaseId = process.env.NOTION_BLOG_DATABASE_ID;
 
 if (!token || !databaseId) {
-  console.error(
-    "NOTION_TOKEN and NOTION_BLOG_DATABASE_ID are required.\n" +
-      "Copy .env.example to .env and fill them in, then re-run."
-  );
-  process.exit(1);
+  const missing = "NOTION_TOKEN and NOTION_BLOG_DATABASE_ID are required.";
+
+  if (process.env.VERCEL) {
+    console.error(
+      `${missing}\nSet both in Vercel under Settings → Environment Variables, ` +
+        "then redeploy. Refusing to build a site with no blog content."
+    );
+  } else {
+    console.warn(
+      `${missing}\nSkipping the Notion sync and leaving src/content as it is. ` +
+        "Copy .env.example to .env and fill it in to pull posts locally."
+    );
+  }
+
+  process.exit(process.env.VERCEL ? 1 : 0);
 }
 
 const notion = new Client({ auth: token, retry: { maxRetries: 4 } });

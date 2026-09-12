@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "react-router dev",
-    "build": "react-router typegen && tsc && react-router build",
+    "build": "npm run content && react-router typegen && tsc && react-router build",
     "typecheck": "react-router typegen && tsc",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",

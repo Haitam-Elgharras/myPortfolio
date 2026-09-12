@@ -35,17 +35,12 @@ export default [
     },
   },
   {
-    // Route modules and the root module export the framework's own API
-    // (meta/links/loader/ErrorBoundary) next to the component. That is the
-    // required shape, not an accident, so the Fast Refresh heuristic does not
-    // apply here.
     files: ["src/root.tsx", "src/routes.ts", "src/pages/**/*.tsx"],
     rules: {
       "react-refresh/only-export-components": "off",
     },
   },
   {
-    // Build scripts and config run in Node, not the browser.
     files: ["*.config.ts", "*.config.js", "scripts/**/*.ts"],
     languageOptions: {
       parser: tsParser,
